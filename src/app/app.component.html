@@ -1,0 +1,47 @@
+<ion-app>
+  <ion-split-pane when="(min-width: 1600px)">
+   
+    <ion-menu class="menu" type="overlay" mode="ios"> 
+     
+     <ion-content>
+       <div class="menu-container">
+        <div class="logo">
+          <img src="assets/imgs/App Logo.png">
+        </div>
+        <hr>
+        <div class="menu-items">
+         <ion-row>
+
+          <ion-col>
+            <ion-icon name="ios-home"></ion-icon>
+            <p>Home</p>
+          </ion-col>
+          
+          <ion-col>
+            <ion-icon name="ios-apps"></ion-icon>
+            <p>Categories</p>
+          </ion-col>
+
+          </ion-row>
+          <ion-row>
+           
+              <ion-col>
+                  <ion-icon name="list"></ion-icon>
+                  <p>List</p>
+              </ion-col>
+              
+              <ion-col>
+                  <ion-icon name="cart"></ion-icon>
+                  <p>Cart</p>
+              </ion-col>
+    
+              </ion-row>
+        </div>
+      </div>
+      </ion-content>
+    
+    </ion-menu>
+
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

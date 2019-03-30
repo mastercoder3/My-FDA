@@ -1,0 +1,123 @@
+ion-toolbar{
+    --background: rgb(190, 34, 34);
+  }
+  ion-title{
+    --color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+   
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  ion-icon{
+    color: white;
+    font-size: 22px;
+    margin-left: 10%;
+  }
+  #cart-icon{
+    margin-left: 60%;
+    font-size: 22px;
+  }
+  ion-content{
+    height: 100%;
+    width: 100%;
+    --background: url('../../../assets/imgs/background1.png');
+  }
+
+  .container{
+    height: 100%;
+    width: 100%;
+    .upper-div{
+      width: 100%;
+      height: 40%;
+      background-color: white;
+      img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -5%;
+      }
+      .icon-div{
+        margin-left: 75%;
+        padding-top: 5%;
+
+        #like{
+          font-size: 26px;
+          color: gray;
+        }
+        #share{
+          font-size: 26px;
+          font-weight: bold;
+          color: gray;
+        }
+      }
+      .stars{
+        width: 50%;
+        margin-top: -2%;
+        ion-icon{
+            font-size: 18px;
+            color: gray;
+            margin-right: -11%;
+        }
+    }
+
+    }
+
+    .body{
+      height: 60%;
+      width: 100%;
+      h2{
+        text-align: center;
+        color: rgb(190, 34, 34);
+        font-size: 18px;
+      }
+      p{
+        text-align: center;
+        font-size: 14px;
+      }
+      hr{
+        background-color: white;
+        height: 1px;
+        opacity: 0.8;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        visibility: visible;
+      }
+      .div-circle{
+        text-align: center;
+        border: solid;
+        border-width: 1px;
+        border-color: green;
+        border-radius: 50px;
+        height: 30px;
+        width: 30px;
+        padding-top: 10%;
+      }
+      #counter{
+        text-align: center;
+        font-size: 20px !important;
+        margin-top: 4%;
+      }
+      .footer p{
+        opacity: 0.8;
+        text-align: center;
+        font-size: 16px;  
+      }
+      #btn-cart{
+        margin-top: 35%;
+        height: 100%;
+        width: 70%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        --background: rgb(190, 34, 34);
+        --border-radius: 100%;
+      }
+      #extra-p{
+        height: 20%;
+      }
+    }
+  }

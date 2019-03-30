@@ -1,0 +1,105 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+
+
+.menu{
+    height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    --background: transparent;
+}
+ion-content{
+    --background: transparent;
+}
+.menu-container{
+    position: absolute;
+    top: 20vh;
+    height: 60% !important;
+    background-color: white;
+    .logo{
+        height: 30%;
+        width: 40%;
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 100%;
+        margin-top: 5%;
+        border-color: rgb(190, 34, 34);
+    }
+    img{
+        height: 70%;
+        width: 80%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 20%;
+    }
+    hr{
+        height: 1.5px;
+        background-color: black;
+        opacity: 0.9;
+        width: 80%;
+        margin-top: 5%;
+    }
+}
+.menu-items{
+    height: 55%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    ion-row{
+        margin-top: 10%;
+        color: black;
+        font-size: 28px; 
+        text-align: center;
+    }
+    p{
+        margin-top: -3%;
+        font-size: 16px;
+    }
+    
+}
+@media (min-width: 1024px) and  (max-width: 1200px){
+    .menu-container{
+        position: absolute;
+        top: 20vh;
+        height: 60% !important;
+        width: 100%;
+        background-color: white;
+        .logo{
+            height: 30%;
+            width: 40%;
+            background-color: white;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 100%;
+            margin-top: 5%;
+            border-color: rgb(190, 34, 34);
+        }
+        img{
+            height: 70%;
+            width: 80%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 20%;
+        }
+        hr{
+            height: 1.5px;
+            background-color: black;
+            opacity: 0.9;
+            width: 80%;
+            margin-top: 5%;
+        }
+    }
+}
