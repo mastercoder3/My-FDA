@@ -18,8 +18,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="container">
+<ion-content class="container">
+  <div class="body">
+    
     <div class="upper-div">
         <div class="icon-div">
           <ion-icon name="heart" id="like"></ion-icon>
@@ -34,11 +35,19 @@
             <ion-icon name="md-star"></ion-icon>
           </div>
     </div>
-    <div class="body">
+
+    <div class="body-content">
       <h2>Pepporoni Pizza</h2>
       <p>Pepporoni, Cheeze, Tomato, Olive and Pepper</p>
       <hr>
-      <ion-row>
+      <div class="size"> 
+          &nbsp;
+          <div class="div-circle">S</div>
+          <div class="div-circle">M</div>
+          <div class="div-circle">L</div>
+      </div>
+      
+      <!-- <ion-row>
         <ion-col size="3.5"></ion-col>
         <ion-col size="5">
           <ion-row>
@@ -48,9 +57,17 @@
           </ion-row>  
         </ion-col>
         <ion-col size="3.5"></ion-col>
-      </ion-row>
+      </ion-row> -->
+
       <hr>
-      <ion-row>
+
+      <div class="size"> 
+          &nbsp;
+          <div class="div-circle">&ndash;</div>
+          <p id="counter">2</p>
+          <div class="div-circle">+</div>
+      </div>
+      <!-- <ion-row>
         <ion-col size="3.5"></ion-col>
         <ion-col size="5">
           <ion-row>
@@ -60,8 +77,9 @@
           </ion-row>  
         </ion-col>
         <ion-col size="3.5"></ion-col>
-      </ion-row>
-      <hr style="margin-top: -3%;">
+      </ion-row> -->
+      <hr>
+      
       <ion-row class="footer">
         <ion-col><p>50 $</p></ion-col>
             <ion-col>

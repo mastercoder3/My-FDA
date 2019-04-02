@@ -20,24 +20,29 @@ ion-toolbar{
     margin-left: 60%;
     font-size: 22px;
   }
-  ion-content{
+  .container{
     height: 100%;
     width: 100%;
     --background: url('../../../assets/imgs/background1.png');
   }
 
-  .container{
+  .body{
     height: 100%;
-    width: 100%;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
     .upper-div{
       width: 100%;
-      height: 40%;
+      height: 15rem;
       background-color: white;
+      margin-top: 5%;
+      border-radius: 20px;
       img{
+        margin-top: -5%;
+        border-radius: 100%;
         display: block;
         margin-left: auto;
         margin-right: auto;
-        margin-top: -5%;
       }
       .icon-div{
         margin-left: 75%;
@@ -65,7 +70,7 @@ ion-toolbar{
 
     }
 
-    .body{
+    .body-content{
       height: 60%;
       width: 100%;
       h2{
@@ -86,7 +91,16 @@ ion-toolbar{
         margin-right: auto;
         visibility: visible;
       }
+      .size{
+        height: 2rem;
+        display: grid;
+        align-items: center;
+        grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+        
+      }
       .div-circle{
+        margin-left: auto;
+        margin-right: auto;
         text-align: center;
         border: solid;
         border-width: 1px;

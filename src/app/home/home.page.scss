@@ -15,58 +15,79 @@ ion-title{
 ion-menu-button{
   color: white;
 }
+
+.container{
+  height: 100%;
+  width: 100%;
+}
 .body{
   width: 100%;
   height: 100%;
-  background-image: url("./../../assets/imgs/background1.png");
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 }
 .pizza{
-  height: 40%;
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  width: 95%;
+  display: block;
   img{
     width: 100%;
-    height: 100%;
+    height: 85%;
+    padding: 2%;
+    border-radius: 5%;
   }
 }
 .pizza .caption{
-  z-index: 111;
-  background: #DED7CF;
-  color: black;
-  opacity: 0.8;
-  font-size: 28px;
-  font-weight: bold;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  margin-top: -16%;  
-  width: 45%;
-  text-align: center;
-}
 
-@media (min-width: 320px) and  (max-width: 350px){
-  .caption{
-    margin-top: -20% !important;
-    z-index: 111;
-    background: #DED7CF;
-    color: black;
-    opacity: 0.8;
-    font-size: 20px !important;
-    font-weight: bold;
+  height: 12%;
+  width: 40%;
+  background: white;
+  position: relative;
+  top: -20%;
+  h1{
     font-family: "Comic Sans MS", cursive, sans-serif;
-    width: 45%;
-    text-align: center;
+    font-size: 1.5rem;
+    text-align: center; 
+    margin-top: 0%;
+    margin-bottom: 0%;
+    word-wrap: none;
   }
 }
+
+// @media (min-width: 320px) and  (max-width: 350px){
+//   .caption{
+//     margin-top: -20% !important;
+//     z-index: 111;
+//     background: #DED7CF;
+//     color: black;
+//     opacity: 0.8;
+//     font-size: 20px !important;
+//     font-weight: bold;
+//     font-family: "Comic Sans MS", cursive, sans-serif;
+//     width: 45%;
+//     text-align: center;
+//   }
+// }
 
 @media (min-width: 760px) and  (max-width: 1200px){
-  .pizza .caption{
-    z-index: 111;
-    background: #DED7CF;
-    color: black;
-    opacity: 0.8;
-    font-size: 28px;
-    font-weight: bold;
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    margin-top: -8%;  
-    width: 45%;
-    text-align: center;
-  }
+  .body{
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  .caption
+  {height: 10%;}
+}
+}
+
+@media (min-width: 1366px) and  (max-width: 1400px){
+  .body{
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  .caption
+  {height: 10%;}
+}
 }
