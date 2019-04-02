@@ -19,6 +19,7 @@ ion-menu-button{
 .container{
   height: 100%;
   width: 100%;
+  background-image: url(../../assets/imgs/background1.png);
 }
 .body{
   width: 100%;
@@ -43,7 +44,7 @@ ion-menu-button{
 .pizza .caption{
 
   height: 12%;
-  width: 40%;
+  width: 42%;
   background: white;
   position: relative;
   top: -20%;
@@ -72,22 +73,36 @@ ion-menu-button{
 //   }
 // }
 
-@media (min-width: 760px) and  (max-width: 1200px){
+@media (min-width: 600px) and  (max-width: 1200px){
   .body{
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr;
   .caption
-  {height: 10%;}
+  {height: 10%;
+  width: 50%;}
 }
 }
 
-@media (min-width: 1366px) and  (max-width: 1400px){
+@media (min-width: 1266px) and  (max-width: 1800px){
   .body{
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   .caption
-  {height: 10%;}
+  {height: 10%;
+  width: 50%;}
 }
 }
+@media (min-width: 500px) and  (max-width: 600px){
+  .body{
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  .caption
+  {height: 15%;
+  width: 50%;}
+}
+}
+
+

@@ -7,6 +7,7 @@ ion-toolbar{
   ion-content{
       height: 100%;
       width: 100%;
+     
  
   }
 .body{
@@ -18,6 +19,7 @@ ion-toolbar{
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    
 }
 
 .content{
@@ -26,6 +28,8 @@ ion-toolbar{
     background-color: white;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 5%;
+    
 }
 .image{
     width: 100%;
@@ -33,7 +37,6 @@ ion-toolbar{
     img{
         height: 100%;
         width: 100%;
-        border-radius: 5%;
     }
     .tag{
         height: 10%;

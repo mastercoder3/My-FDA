@@ -19,7 +19,25 @@
 <ion-content>
   <div class="body">
     <h1><b style="color:rgb(190, 34, 34)">Total</b> : 100 $</h1>
-   <div class="item">
+   
+    <div class="item">
+    <hr id="sep">
+
+    <ion-row>
+      <ion-col size="3">
+        <img src="assets/imgs/cartpizza.png">
+      </ion-col>
+      <ion-col size="7" id="text">
+        <h3>Pepporoni Pizza</h3>
+        <p>Pepporoni, Cheese, Cheese,<br>Tomato, Olive and Pepper</p>
+        <p><b style="color:rgb(190, 34, 34); margin-right: 15%;">50 $</b><b style=" margin-right: 15%;">M</b><b style="color:rgb(190, 34, 34);">Delete</b></p>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="add-circle-outline" id="add"></ion-icon>
+        <ion-icon name="remove-circle-outline" id="remove"></ion-icon>
+      </ion-col>
+    </ion-row>
+
     <hr id="sep">
     <ion-row>
       <ion-col size="3">
@@ -35,27 +53,11 @@
         <ion-icon name="remove-circle-outline" id="remove"></ion-icon>
       </ion-col>
     </ion-row>
-   </div>
-   <div class="item">
-    <hr id="sep">
-    <ion-row>
-      <ion-col size="3">
-        <img src="assets/imgs/cartpizza.png">
-      </ion-col>
-      <ion-col size="7" id="text">
-        <h3>Pepporoni Pizza</h3>
-        <p>Pepporoni, Cheese, Cheese,<br>Tomato, Olive and Pepper</p>
-        <p><b style="color:rgb(190, 34, 34); margin-right: 15%;">50 $</b><b style=" margin-right: 15%;">M</b><b style="color:rgb(190, 34, 34);">Delete</b></p>
-      </ion-col>
-      <ion-col size="2">
-        <ion-icon name="add-circle-outline" id="add"></ion-icon>
-        <ion-icon name="remove-circle-outline" id="remove"></ion-icon>
-      </ion-col>
-    </ion-row>
-   </div>
+</div>
 
     <ion-row id="checkbox"><ion-checkbox mode="ios" color="danger"></ion-checkbox><p>I agree with Terms and Conditions</p></ion-row>
-    <ion-button expand="full" id="btncheck">Check Out</ion-button>
+    
+    <ion-button expand="full" id="btncheck" slot="end" color="danger">Check Out</ion-button>
 
   </div>
 </ion-content>

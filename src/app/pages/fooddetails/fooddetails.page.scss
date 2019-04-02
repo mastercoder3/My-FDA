@@ -92,7 +92,7 @@ ion-toolbar{
         visibility: visible;
       }
       .size{
-        height: 2rem;
+        height: 4rem;
         display: grid;
         align-items: center;
         grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
@@ -108,12 +108,12 @@ ion-toolbar{
         border-radius: 50px;
         height: 30px;
         width: 30px;
-        padding-top: 10%;
+        padding: 5%;
       }
       #counter{
         text-align: center;
         font-size: 20px !important;
-        margin-top: 4%;
+        vertical-align: middle;
       }
       .footer p{
         opacity: 0.8;
@@ -124,11 +124,15 @@ ion-toolbar{
         margin-top: 35%;
         height: 100%;
         width: 70%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
         --background: rgb(190, 34, 34);
         --border-radius: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        ion-icon{
+          margin-left: auto;
+          margin-right: auto;
+        }
       }
       #extra-p{
         height: 20%;

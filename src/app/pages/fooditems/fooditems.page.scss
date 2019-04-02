@@ -23,6 +23,7 @@ ion-toolbar{
   .container{
     height: 100%;
     width: 100%;
+    background-image: url(../../../assets/imgs/background1.png);
     .header{
       height: 2.5rem;
       width: 30%;
@@ -109,6 +110,15 @@ ion-toolbar{
     align-items: center;
     grid-template-columns: 1fr 1fr;
   
+  }
+  }
+
+  @media (min-width: 1266px) and  (max-width: 1800px){
+    .body{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    
   }
   }
   
