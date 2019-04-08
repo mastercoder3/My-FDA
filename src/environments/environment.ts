@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyArLx8hyOLnkD10rowW9rnrm_4go6gJ70k",
+    authDomain: "la-trat-toria-1.firebaseapp.com",
+    databaseURL: "https://la-trat-toria-1.firebaseio.com",
+    projectId: "la-trat-toria-1",
+    storageBucket: "la-trat-toria-1.appspot.com",
+    messagingSenderId: "727206966591"
+  }
 };
 
 /*

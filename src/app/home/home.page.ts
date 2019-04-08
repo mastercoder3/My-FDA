@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 export class HomePage {
   constructor(private router: Router) { }
 
-  fooditem(){
-    this.router.navigate(['/fooditems']);
+  fooditem(val){
+    this.router.navigate(['/fooditems', {
+      type: val
+    }]);
   }
 }

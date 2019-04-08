@@ -3,11 +3,11 @@
       <ion-row>
         <ion-col size="2" id="back">
           <ion-buttons>
-            <ion-icon name="arrow-round-back" (click)="goback()"></ion-icon>
+            <ion-icon name="arrow-back" (click)="goback()"></ion-icon>
           </ion-buttons>
         </ion-col>
         <ion-col size="7">
-          <ion-title>
+          <ion-title style="width: 100%">
             Menu Items
           </ion-title>
         </ion-col>
@@ -17,15 +17,15 @@
 </ion-header>
 
 <ion-content class="container">
-  <div class="header"><h1>Pizzas</h1></div>
+  <div class="header"><h1>{{type}}</h1></div>
     <div class="body">
        
-        <div class="content">
-            <img src="assets/imgs/pepperpizza.png" (click)="fooddetails()">
-            <p>Chicken Pepporoni Pizza</p>
+        <div class="content" *ngFor="let item of food">
+            <img src="{{item?.imageURL || image}}" (click)="fooddetails()">
+            <p>{{item?.title}}</p>
           </div>
 
-          <div class="content">
+          <!-- <div class="content">
             <img src="assets/imgs/bbqpizza.png" >
             <p>Chicken B.B.Q Pizza</p>
           </div>
@@ -48,7 +48,7 @@
           <div class="content">
             <img src="assets/imgs/pepperpizza.png" >
             <p>Chicken Pepporoni Pizza</p>
-          </div>
+          </div> -->
 
       </div>
     <!-- <div class="outerdiv">
