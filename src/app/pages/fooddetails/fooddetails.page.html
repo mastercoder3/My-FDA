@@ -1,9 +1,9 @@
-<ion-header>
+<!-- <ion-header>
     <ion-toolbar>
       <ion-row>
         <ion-col size="2">
           <ion-buttons>
-            <ion-icon name="arrow-round-back" (click)="goback()"></ion-icon>
+            <ion-icon name="arrow-back" (click)="goback()"></ion-icon>
           </ion-buttons>
         </ion-col>
         <ion-col size="7">
@@ -23,41 +23,24 @@
     
     <div class="upper-div">
         <div class="icon-div">
-          <ion-icon name="heart" id="like"></ion-icon>
           <ion-icon name="share" id="share"></ion-icon>
         </div>
-        <img src="assets/imgs/cartpizza.png">
-        <div class="stars">
-            <ion-icon name="md-star"></ion-icon>
-            <ion-icon name="md-star"></ion-icon>
-            <ion-icon name="md-star"></ion-icon>
-            <ion-icon name="md-star"></ion-icon>
-            <ion-icon name="md-star"></ion-icon>
-          </div>
+        <img src="{{ product?.imageURL || 'assets/imgs/cartpizza.png'}}">
+        
     </div>
 
     <div class="body-content">
-      <h2>Pepporoni Pizza</h2>
-      <p>Pepporoni, Cheeze, Tomato, Olive and Pepper</p>
+      <h2>{{product?.title}}</h2>
+      <p>{{product?.ingredients}}</p>
       <hr>
-      <div class="size"> 
-          &nbsp;
-          <div class="div-circle">S</div>
-          <div class="div-circle">M</div>
-          <div class="div-circle">L</div>
+      
+      <div class="size" *ngFor="let item of product?.size; let i = index;"> 
+          <div class="div-circle">
+          </div>
+          <h6>{{item}}<span style="float: right;">{{product?.price[i]}}</span></h6>
       </div>
       
-      <!-- <ion-row>
-        <ion-col size="3.5"></ion-col>
-        <ion-col size="5">
-          <ion-row>
-            <ion-col><div class="div-circle">S</div></ion-col>
-            <ion-col><div class="div-circle">M</div></ion-col>
-            <ion-col><div class="div-circle">L</div></ion-col>
-          </ion-row>  
-        </ion-col>
-        <ion-col size="3.5"></ion-col>
-      </ion-row> -->
+     
 
       <hr>
 
@@ -67,17 +50,7 @@
           <p id="counter">2</p>
           <div class="div-circle">+</div>
       </div>
-      <!-- <ion-row>
-        <ion-col size="3.5"></ion-col>
-        <ion-col size="5">
-          <ion-row>
-            <ion-col><div class="div-circle">-</div></ion-col>
-            <ion-col><p id="counter">2</p></ion-col>
-            <ion-col><div class="div-circle">+</div></ion-col>
-          </ion-row>  
-        </ion-col>
-        <ion-col size="3.5"></ion-col>
-      </ion-row> -->
+      
       <hr>
       
       <ion-row class="footer">
@@ -89,6 +62,70 @@
               </ion-button>
         </ion-col> 
         <ion-col (click)="openModal()" id="extra-p"><p>Extras</p></ion-col>
+      </ion-row>
+    </div>
+
+  </div>
+</ion-content> -->
+<ion-header>
+    <ion-toolbar>
+      <ion-row>
+        <ion-col size="2">
+          <ion-buttons>
+            <ion-icon name="arrow-round-back" (click)="goback()"></ion-icon>
+          </ion-buttons>
+        </ion-col>
+        <ion-col size="8">
+          <h1 id="main-header">Food Details</h1>
+        </ion-col>
+        <ion-col size="2">
+        </ion-col>
+      </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="container">
+  <div class="body">
+    
+    <div class="upper-div">
+        <div class="icon-div">
+          <ion-icon name="share" id="share"></ion-icon>
+        </div>
+        <img src="assets/imgs/cartpizza.png">
+    </div>
+
+    <div class="body-content">
+      <h2>{{product?.title}}</h2>
+      <p>{{product?.ingredients}}</p>
+      <hr>
+      <div class="size" *ngIf="type === 'pizza'"> 
+        <ion-radio-group>
+        <ion-row *ngFor="let item of product.size; let i = index">
+          <ion-col size="2" no-padding>
+              <ion-radio checked mode="md"></ion-radio>
+          </ion-col>
+          <ion-col size="7" no-padding>
+            <p id="size-tag1">{{item}}</p>
+          </ion-col>
+          <ion-col size="3" no-padding>
+            <p id="size-tag">{{product.price[i]}} &euro;</p>
+          </ion-col>
+          <br> <br>
+        </ion-row>
+          </ion-radio-group>
+      </div>
+    
+      <hr>
+      
+      <ion-row class="footer">
+        <ion-col></ion-col>
+            <ion-col>
+              <ion-button  id="btn-cart" (click)="cart()">
+                <ion-icon name="cart" style="font-size:32px;">
+                </ion-icon>
+              </ion-button>
+        </ion-col> 
+        <ion-col *ngIf="type === 'pizza' || type === 'pasta'" (click)="openModal()" id="extra-p"><p>Extras</p></ion-col>
       </ion-row>
     </div>
 

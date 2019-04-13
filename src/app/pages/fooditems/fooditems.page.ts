@@ -21,7 +21,11 @@ export class FooditemsPage implements OnInit {
       this.type = res.type;
       if(this.type === 'pizza'){
         this.getPizzaItems();
-        this.image = 'assets/imgs/pizza.png';
+        this.image = 'assets/imgs/pepperpizza.png';
+      }
+      else if(this.type === 'pasta'){
+        this.getPastaItems();
+        this.image = 'assets/imgs/pasta.png';
       }
     });
   }
@@ -35,12 +39,26 @@ export class FooditemsPage implements OnInit {
       })))
       .subscribe(res =>{
         this.food = res;
-        console.log(res);
       })
   }
 
-  fooddetails(){
-    this.router.navigate(['/fooddetails']);
+  getPastaItems(){
+    this.api.getAllPasta()
+    .pipe(map(actions => actions.map(a => {
+      const data = a.payload.doc.data();
+      const did = a.payload.doc.id;
+      return {did, ...data}
+    })))
+    .subscribe(res =>{
+      this.food = res;
+    })
+  }
+
+  fooddetails(item){
+    this.router.navigate(['/fooddetails',{
+      data: JSON.stringify(item),
+      type: this.type
+    }]);
   }
   goback(){
     this.router.navigate(['../']);

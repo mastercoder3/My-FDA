@@ -9,10 +9,11 @@ export class HelperService {
   Mymodal
   constructor( public modalController: ModalController) { }
 
-  async presentModal() {
+  async presentModal(type) {
     this.Mymodal = await this.modalController.create({
       component: ModalComponent,
-      componentProps: { value: 123 }
+      componentProps: { type: type },
+      cssClass: 'extrasModal'
     });
   
     return await this.Mymodal.present();

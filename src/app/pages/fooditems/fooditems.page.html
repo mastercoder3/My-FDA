@@ -1,103 +1,35 @@
-<ion-header>
-    <ion-toolbar>
-      <ion-row>
-        <ion-col size="2" id="back">
-          <ion-buttons>
-            <ion-icon name="arrow-back" (click)="goback()"></ion-icon>
-          </ion-buttons>
-        </ion-col>
-        <ion-col size="7">
-          <ion-title style="width: 100%">
-            Menu Items
-          </ion-title>
-        </ion-col>
-        <ion-col></ion-col>
-      </ion-row>
-  </ion-toolbar>
-</ion-header>
-
+<div class="containerr">
+    <div class="header">
+        <div class="back-icon"><ion-icon name="arrow-round-back" (click)="goback()"></ion-icon></div>
+        <img src="{{image}}">
+        <div class="header-tag">
+          <h1>{{type}}</h1>
+        </div>                     
+    </div>
+</div>
 <ion-content class="container">
-  <div class="header"><h1>{{type}}</h1></div>
+    
+
+
     <div class="body">
-       
-        <div class="content" *ngFor="let item of food">
-            <img src="{{item?.imageURL || image}}" (click)="fooddetails()">
-            <p>{{item?.title}}</p>
-          </div>
 
-          <!-- <div class="content">
-            <img src="assets/imgs/bbqpizza.png" >
-            <p>Chicken B.B.Q Pizza</p>
-          </div>
-
-          <div class="content">
-           <img src="assets/imgs/vegiepizza.png" >
-           <p>Fresh vegetables pizza Pizza</p>
-          </div>
-
-          <div class="content">
-            <img src="assets/imgs/pepperpizza.png" >
-            <p>Chicken Pepporoni Pizza</p>
-          </div>
-
-          <div class="content">
-            <img src="assets/imgs/pepperpizza.png" >
-            <p>Chicken Pepporoni Pizza</p>
-          </div>
-
-          <div class="content">
-            <img src="assets/imgs/pepperpizza.png" >
-            <p>Chicken Pepporoni Pizza</p>
-          </div> -->
-
-      </div>
-    <!-- <div class="outerdiv">
-      <div class="header"><h1>Pizzas</h1></div>
-      <ion-row>
-        <ion-col size="6">
-          <div class="content">
-            <img src="assets/imgs/cartpizza.png" (click)="fooddetails()">
-            <p>Chicken Pepporoni Pizza</p>
-          </div>
-        </ion-col>
-        <ion-col size="6">
-            <div class="content">
-              <img src="assets/imgs/pizza2.png">
-              <p>Chicken B.B.Q Pizza</p>
-            </div>
-          </ion-col>
-      </ion-row>
-
-      <ion-row>
-          <ion-col size="6">
-            <div class="content">
-              <img src="assets/imgs/cartpizza.png">
-              <p>Chicken Pepporoni Pizza</p>
-            </div>
-          </ion-col>
-          <ion-col size="6">
-              <div class="content">
-                <img src="assets/imgs/pizza2.png">
-                <p>Chicken B.B.Q Pizza</p>
-              </div>
+       <div class=content *ngFor="let item of food">
+          <ion-row >
+            <ion-col size="10" (click)="fooddetails(item)" no-padding>
+              <h1>{{item?.title}}</h1>
+              <p>{{item?.ingredients}}</p>
             </ion-col>
-        </ion-row>
-
-        <ion-row>
-            <ion-col size="6">
-              <div class="content">
-                <img src="assets/imgs/cartpizza.png">
-                <p>Chicken Pepporoni Pizza</p>
-              </div>
+            <ion-col no-padding size="2">
+              <p id="price-tag" style="font-weight: bolder;" *ngIf="type === 'pizza' ">{{item?.price[0]}} &euro;</p>
+              <p id="price-tag" style="font-weight: bolder;" *ngIf="type !== 'pizza' ">{{item?.price}} &euro;</p>
             </ion-col>
-            <ion-col size="6">
-                <div class="content">
-                  <img src="assets/imgs/pizza2.png">
-                  <p>Chicken B.B.Q Pizza</p>
-                </div>
-              </ion-col>
+            <hr>
           </ion-row>
-    </div> -->
+       </div>
+       <br>
+       <br>
+       
 
+    </div>
   
 </ion-content>

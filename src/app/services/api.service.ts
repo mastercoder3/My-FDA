@@ -11,5 +11,13 @@ export class ApiService {
   getAllPizzas(){
     return this.afs.collection('pizza').snapshotChanges();
   }
+
+  getAllPasta(){
+    return this.afs.collection('pasta').snapshotChanges();
+  }
+
+  getPizzaExtras(){
+    return this.afs.collection('pextras').snapshotChanges();
+  }
   
 }
