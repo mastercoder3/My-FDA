@@ -29,6 +29,32 @@ export class FooddetailsPage implements OnInit {
       this.type = res.type;
       if(this.type === 'pizza')
         this.image = 'assets/imgs/cartpizza.png';
+      else if(this.type === 'pasta'){
+        this.image = 'assets/imgs/pasta.png';
+        this.size = this.product.size;
+        this.basePrice = this.product.price;
+      }
+      else if(this.type === 'salad'){
+        this.image = 'assets/imgs/Salad.png';
+        this.size = this.product.size;
+        this.basePrice = this.product.price;
+      }
+      else if(this.type === 'appetizers'){
+        this.image = 'assets/imgs/appetizers.png';
+        this.size = this.product.size;
+        this.basePrice = this.product.price;
+      }
+      else if(this.type === 'desserts'){
+        this.image = 'assets/imgs/desserts.png';
+        this.size = this.product.size;
+        this.basePrice = this.product.price;
+      }
+      else if(this.type === 'beverages'){
+        this.image = 'assets/imgs/beverages.png';
+        this.size = this.product.size;
+        this.basePrice = this.product.price;
+      }
+
     })
 
     this.helper.getCart().subscribe(res =>{

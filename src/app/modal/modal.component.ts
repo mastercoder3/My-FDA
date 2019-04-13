@@ -36,6 +36,17 @@ export class ModalComponent implements OnInit {
           this.extras = res;
         })
     }
+    else if(this.type === 'pasta'){
+      this.api.getPastaExtras()
+        .pipe(map(actions => actions.map(a =>{
+          const data = a.payload.doc.data();
+          const did = a.payload.doc.id;
+          return {did, ...data};
+        })))
+        .subscribe(res =>{
+          this.extras = res;
+        })
+    }
   }
 
   async closeModal(){

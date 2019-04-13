@@ -16,8 +16,28 @@ export class ApiService {
     return this.afs.collection('pasta').snapshotChanges();
   }
 
+  getAllSalad(){
+    return this.afs.collection('salads').snapshotChanges();
+  }
+
+  getAllAppetizers(){
+    return this.afs.collection('vorspeisen').snapshotChanges();
+  }
+
+  getAllDesserts(){
+    return this.afs.collection('dessert').snapshotChanges();
+  }
+
+  getAllBeverages(){
+    return this.afs.collection('beverages').snapshotChanges();
+  }
+
   getPizzaExtras(){
     return this.afs.collection('pextras').snapshotChanges();
+  }
+
+  getPastaExtras(){
+    return this.afs.collection('pastaextras').snapshotChanges();
   }
   
 }

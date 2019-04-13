@@ -27,7 +27,59 @@ export class FooditemsPage implements OnInit {
         this.getPastaItems();
         this.image = 'assets/imgs/pasta.png';
       }
+      else if(this.type === 'salad'){
+        this.getSaladItems();
+        this.image = 'assets/imgs/Salad.png'
+      }
+      else if(this.type === 'appetizers'){
+        this.getAppetizerItems();
+        this.image = 'assets/imgs/appetizers.png'
+      }
+      else if(this.type === 'desserts'){
+        this.getDessertItems();
+        this.image = 'assets/imgs/desserts.png'
+      }
+      else if(this.type === 'beverages'){
+        this.getBeverageItems();
+        this.image = 'assets/imgs/beverages.png'
+      }
     });
+  }
+
+  getBeverageItems(){
+    this.api.getAllBeverages()
+    .pipe(map(actions => actions.map(a => {
+      const data = a.payload.doc.data();
+      const did = a.payload.doc.id;
+      return {did, ...data}
+    })))
+    .subscribe(res =>{
+      this.food = res;
+    })
+  }
+
+  getDessertItems(){
+    this.api.getAllDesserts()
+    .pipe(map(actions => actions.map(a => {
+      const data = a.payload.doc.data();
+      const did = a.payload.doc.id;
+      return {did, ...data}
+    })))
+    .subscribe(res =>{
+      this.food = res;
+    })
+  }
+
+  getAppetizerItems(){
+    this.api.getAllAppetizers()
+    .pipe(map(actions => actions.map(a => {
+      const data = a.payload.doc.data();
+      const did = a.payload.doc.id;
+      return {did, ...data}
+    })))
+    .subscribe(res =>{
+      this.food = res;
+    })
   }
 
   getPizzaItems(){
@@ -44,6 +96,18 @@ export class FooditemsPage implements OnInit {
 
   getPastaItems(){
     this.api.getAllPasta()
+    .pipe(map(actions => actions.map(a => {
+      const data = a.payload.doc.data();
+      const did = a.payload.doc.id;
+      return {did, ...data}
+    })))
+    .subscribe(res =>{
+      this.food = res;
+    })
+  }
+
+  getSaladItems(){
+    this.api.getAllSalad()
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
       const did = a.payload.doc.id;
