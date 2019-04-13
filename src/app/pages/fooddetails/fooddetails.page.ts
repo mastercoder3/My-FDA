@@ -12,6 +12,7 @@ export class FooddetailsPage implements OnInit {
 
   product;
   type;
+  addon;
 
   constructor(public modalController: ModalController, private helper:HelperService, private router: Router, private actived: ActivatedRoute) { }
 
@@ -23,7 +24,11 @@ export class FooddetailsPage implements OnInit {
     })
   }
   openModal(){
-    this.helper.presentModal(this.type) 
+    this.helper.presentModal(this.type).then(res =>{
+      this.helper.modalGotClosed().then(ress =>{
+        this.addon = res.data.addon;
+      })
+    })
   }
   goback(){
     this.router.navigate(['/fooditems']);

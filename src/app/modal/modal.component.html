@@ -9,7 +9,7 @@
               <ion-label>{{listt?.display}}</ion-label>
               <div class="quantity" item-right>
                   <ion-icon name="remove-circle-outline" style="font-size: 1.4em;" (click)="removeFromAdded(item?.did, listt?.display)" ></ion-icon>
-                  <span style="margin-left: 5px; margin-right: 5px; font-size: 1.4em;">x{{getQuantity(item?.did,listt?.display, item.price)}}</span>
+                  <span style="margin-left: 5px; margin-right: 5px; font-size: 1.4em;">x{{getQuantity(item?.did,listt?.display)}}</span>
                   <ion-icon name="add-circle-outline" style="font-size: 1.4em;" (click)="addToAdded(item?.did,listt?.display,item?.price)"></ion-icon>
               </div>
             </ion-item>

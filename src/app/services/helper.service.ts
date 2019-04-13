@@ -18,6 +18,11 @@ export class HelperService {
   
     return await this.Mymodal.present();
   }
+
+ async modalGotClosed(){
+    return await this.Mymodal.onDidDismiss();
+  }
+
   closeModal(){
     this.Mymodal.dismiss()
   }

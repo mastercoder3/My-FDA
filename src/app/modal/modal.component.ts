@@ -31,14 +31,15 @@ export class ModalComponent implements OnInit {
         })))
         .subscribe(res =>{
           this.extras = res;
-          console.log(res)
         })
     }
   }
 
   async closeModal(){
     const modal = await this.helper.getTop();
-    modal.dismiss();
+    modal.dismiss({
+      addon: this.added
+    });
   }
 
   getQuantity(did,text){
@@ -109,4 +110,6 @@ export class ModalComponent implements OnInit {
       }
     }
   }
+
+  
 }
