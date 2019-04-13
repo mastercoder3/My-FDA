@@ -1,72 +1,3 @@
-<!-- <ion-header>
-    <ion-toolbar>
-      <ion-row>
-        <ion-col size="2">
-          <ion-buttons>
-            <ion-icon name="arrow-back" (click)="goback()"></ion-icon>
-          </ion-buttons>
-        </ion-col>
-        <ion-col size="7">
-          <ion-title>
-            Food Details
-          </ion-title>
-        </ion-col>
-        <ion-col size="3">
-          <ion-icon name="cart" id="cart-icon"  (click)="cart()"></ion-icon>
-        </ion-col>
-      </ion-row>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="container">
-  <div class="body">
-    
-    <div class="upper-div">
-        <div class="icon-div">
-          <ion-icon name="share" id="share"></ion-icon>
-        </div>
-        <img src="{{ product?.imageURL || 'assets/imgs/cartpizza.png'}}">
-        
-    </div>
-
-    <div class="body-content">
-      <h2>{{product?.title}}</h2>
-      <p>{{product?.ingredients}}</p>
-      <hr>
-      
-      <div class="size" *ngFor="let item of product?.size; let i = index;"> 
-          <div class="div-circle">
-          </div>
-          <h6>{{item}}<span style="float: right;">{{product?.price[i]}}</span></h6>
-      </div>
-      
-     
-
-      <hr>
-
-      <div class="size"> 
-          &nbsp;
-          <div class="div-circle">&ndash;</div>
-          <p id="counter">2</p>
-          <div class="div-circle">+</div>
-      </div>
-      
-      <hr>
-      
-      <ion-row class="footer">
-        <ion-col><p>50 $</p></ion-col>
-            <ion-col>
-              <ion-button  id="btn-cart">
-                <ion-icon name="cart" style="font-size:32px;">
-                </ion-icon>
-              </ion-button>
-        </ion-col> 
-        <ion-col (click)="openModal()" id="extra-p"><p>Extras</p></ion-col>
-      </ion-row>
-    </div>
-
-  </div>
-</ion-content> -->
 <ion-header>
     <ion-toolbar>
       <ion-row>
@@ -79,6 +10,7 @@
           <h1 id="main-header">Food Details</h1>
         </ion-col>
         <ion-col size="2">
+            <ion-icon name="cart" id="cart-icon"  (click)="cart()"></ion-icon>
         </ion-col>
       </ion-row>
   </ion-toolbar>
@@ -91,7 +23,7 @@
         <div class="icon-div">
           <ion-icon name="share" id="share"></ion-icon>
         </div>
-        <img src="assets/imgs/cartpizza.png">
+        <img src="{{image}}">
     </div>
 
     <div class="body-content">
@@ -102,7 +34,7 @@
         <ion-radio-group>
         <ion-row *ngFor="let item of product.size; let i = index">
           <ion-col size="2" no-padding>
-              <ion-radio checked mode="md"></ion-radio>
+              <ion-radio mode="md" (click)="sizeChanged(item,product.price[i])"></ion-radio>
           </ion-col>
           <ion-col size="7" no-padding>
             <p id="size-tag1">{{item}}</p>
@@ -119,13 +51,15 @@
       <br>
       <ion-row>
         <ion-col size="5">
-            <ion-icon name="remove-circle-outline" style="float: right; font-size: 2em; color: red; margin-left: 0 !important;"></ion-icon>
+            <ion-icon (click)="removeFromQuantity()"
+             name="remove-circle-outline" style="float: right; font-size: 2em; color: red; margin-left: 0 !important;"></ion-icon>
         </ion-col>
           <ion-col size="2">
-              <h4 style="text-align: center; width: 100%; position: relative; top: -12px;">1</h4>
+              <h4 style="text-align: center; width: 100%; position: relative; top: -12px;">{{quantity}}</h4>
           </ion-col>
          <ion-col col="5">
-            <ion-icon name="add-circle-outline" style="float: left; font-size: 2em; color: red; margin-left: 0 !important;"></ion-icon>
+            <ion-icon (click)="addToQuantity()"
+             name="add-circle-outline" style="float: left; font-size: 2em; color: red; margin-left: 0 !important;"></ion-icon>
          </ion-col>
          
       </ion-row>

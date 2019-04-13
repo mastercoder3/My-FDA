@@ -14,10 +14,13 @@ export class ModalComponent implements OnInit {
   constructor(private helper: ModalController, private router: Router, private api: ApiService) { }
 
   @Input() type;
+  @Input() addon;
   extras;
   added: Array<any> = [];
 
   ngOnInit() {
+    if(this.addon)
+      this.added = this.addon;
     this.getData();
   }
 
