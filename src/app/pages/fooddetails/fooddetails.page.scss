@@ -20,7 +20,8 @@ ion-icon{
   margin-left: auto;
   margin-right: auto;
   display: block;
-  font-size: 22px;
+  font-size: 2em;
+  z-index: 5;
 }
 .container{
   height: 100%;
@@ -160,6 +161,13 @@ ion-icon{
 
 .quantity{
   display: block;
+}
+
+#notifications-badge{
+  position: absolute;
+  left: 55%;
+  bottom: 25px;
+  z-index: 10;
 }
 
 @media (min-width: 600px) and  (max-width: 1200px){

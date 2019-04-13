@@ -18,41 +18,30 @@
 
 <ion-content>
   <div class="body">
-    <h1><b style="color:rgb(190, 34, 34)">Total</b> : 100 $</h1>
+    <h1><b style="color:rgb(190, 34, 34)">Total</b> : {{total | number : '1.2'}} &euro;</h1>
    
     <div class="item">
     <hr id="sep">
 
-    <ion-row>
+    <ion-row *ngFor="let item of cart; let i = index;">
       <ion-col size="3">
-        <img src="assets/imgs/cartpizza.png">
+        <img src="{{item?.imageURL}}">
       </ion-col>
       <ion-col size="7" id="text">
-        <h3>Pepporoni Pizza</h3>
-        <p>Pepporoni, Cheese, Cheese,<br>Tomato, Olive and Pepper</p>
-        <p><b style="color:rgb(190, 34, 34); margin-right: 15%;">50 $</b><b style=" margin-right: 15%;">M</b><b style="color:rgb(190, 34, 34);">Delete</b></p>
+        <h3>{{item?.itemTitle}}</h3>
+        <p>{{item?.itemIngredients}}</p>
+        <p *ngIf="item.extras.length > 0">{{item?.extras}}</p>
+        <p><b style="color:rgb(190, 34, 34); margin-right: 15%;">{{item?.price}} &euro;</b><b style=" margin-right: 15%;">{{item?.size}}</b><b style="color:rgb(190, 34, 34);" (click)="delete(i)" >Delete</b></p>
       </ion-col>
       <ion-col size="2">
-        <ion-icon name="add-circle-outline" id="add"></ion-icon>
-        <ion-icon name="remove-circle-outline" id="remove"></ion-icon>
+        <ion-icon name="add-circle-outline" id="add" (click)="addToQuantity(i)" ></ion-icon>
+        <p style="margin: 0 0 0 0; padding-left: 9px;">{{item?.quantity}}</p>
+        <ion-icon name="remove-circle-outline" id="remove" (click)="removeFromQuantity(i)" ></ion-icon>
       </ion-col>
+      <hr id="sep">
     </ion-row>
 
-    <hr id="sep">
-    <ion-row>
-      <ion-col size="3">
-        <img src="assets/imgs/cartpizza.png">
-      </ion-col>
-      <ion-col size="7" id="text">
-        <h3>Pepporoni Pizza</h3>
-        <p>Pepporoni, Cheese, Cheese,<br>Tomato, Olive and Pepper</p>
-        <p><b style="color:rgb(190, 34, 34); margin-right: 15%;">50 $</b><b style=" margin-right: 15%;">M</b><b style="color:rgb(190, 34, 34);">Delete</b></p>
-      </ion-col>
-      <ion-col size="2">
-        <ion-icon name="add-circle-outline" id="add"></ion-icon>
-        <ion-icon name="remove-circle-outline" id="remove"></ion-icon>
-      </ion-col>
-    </ion-row>
+
 </div>
 
     <ion-row id="checkbox"><ion-checkbox mode="ios" color="danger"></ion-checkbox><p>I agree with Terms and Conditions</p></ion-row>
