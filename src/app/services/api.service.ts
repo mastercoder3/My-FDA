@@ -43,5 +43,13 @@ export class ApiService {
   getAllDeals(){
     return this.afs.collection('deals').snapshotChanges();
   }
+
+  getAllZipCodes(){
+    return this.afs.collection('zips').snapshotChanges();
+  }
+
+  addToOrders(data){
+    return this.afs.collection('orders').add(data);
+  }
   
 }

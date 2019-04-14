@@ -9,7 +9,7 @@ import { HelperService } from 'src/app/services/helper.service';
 })
 export class CartPage implements OnInit {
 
-  cart:Array<any>;
+  cart:Array<any>=[];
   total: number = 0;
   terms=false; 
 
@@ -18,7 +18,6 @@ export class CartPage implements OnInit {
   ngOnInit() {
     this.helper.getCart().subscribe(res =>{
       this.cart = res;
-      console.log(this.cart)
       this.setTotal();
     });
   }

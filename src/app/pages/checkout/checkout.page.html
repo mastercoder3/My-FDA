@@ -8,7 +8,7 @@
         </ion-col>
         <ion-col size="7">
           <ion-title>
-            Cart
+            Checkout
           </ion-title>
         </ion-col>
         <ion-col></ion-col>
@@ -17,5 +17,82 @@
 </ion-header>
 
 <ion-content>
+
+  <div class="container">
+    <br>
+    <h1><b style="color:rgb(190, 34, 34)">Total</b> : {{total | number : '1.2'}} &euro;</h1>
+    <br>
+      <ion-row padding >
+          <ion-col size="2">
+            <ion-icon name="person" style="color:white;"></ion-icon>
+          </ion-col>
+          <ion-col col="10">
+            <ion-input type="text" placeholder="Your Name" [(ngModel)]="data.name"
+              style="border-bottom: 1px white solid; position: relative; bottom: 13px;">
+            </ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row padding >
+            <ion-col size="2">
+              <ion-icon name="mail" style="color:white;"></ion-icon>
+            </ion-col>
+            <ion-col col="10">
+              <ion-input type="email" placeholder="Email" [(ngModel)]="data.email"
+                style="border-bottom: 1px white solid; position: relative; bottom: 13px;">
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row padding >
+              <ion-col size="2">
+                <ion-icon name="mail-open" style="color:white;"></ion-icon>
+              </ion-col>
+              <ion-col col="10">
+                <ion-textarea  placeholder="Your Address" [(ngModel)]="data.address"
+                  style="border-bottom: 1px white solid; position: relative; bottom: 13px;">
+                </ion-textarea>
+              </ion-col>
+            </ion-row>
+            <ion-row padding >
+                <ion-col size="2">
+                  <ion-icon name="phone-portrait" style="color:white;"></ion-icon>
+                </ion-col>
+                <ion-col col="10">
+                  <ion-input type="text" placeholder="Telephone" [(ngModel)]="data.phone"
+                    style="border-bottom: 1px white solid; position: relative; bottom: 13px;">
+                  </ion-input>
+                </ion-col>
+              </ion-row>
+            <ion-row padding >
+                <ion-col size="2">
+                  <ion-icon name="book" style="color:white;"></ion-icon>
+                </ion-col>
+                <ion-col col="10">
+                  <ion-textarea  placeholder="Notes" [(ngModel)]="data.notes"
+                    style="border-bottom: 1px white solid; position: relative; bottom: 13px;">
+                  </ion-textarea>
+                </ion-col>
+              </ion-row>
+              <ion-row padding *ngIf="!terms" >
+                  <ion-col size="2">
+                    <ion-icon name="mail-unread" style="color:white;"></ion-icon>
+                  </ion-col>
+                  <ion-col col="10">
+                      <ion-select placeholder="Postal code" [(ngModel)]="data.code" (ngModelChange)="setNewPrice($event)">
+                          <ion-select-option value="{{item?.code}}" *ngFor="let item of zips">{{item?.code}} ({{item?.area}})</ion-select-option>
+                        </ion-select>
+                  </ion-col>
+                </ion-row>
+                <ion-row padding >
+                    <ion-col size="2">
+                      <ion-icon name="clock" style="color:white;"></ion-icon>
+                    </ion-col>
+                    <ion-col col="10">
+                        <ion-datetime display-format="MMM DD, YYYY HH:mm" [(ngModel)]="data.date" placeholder="Pick a Date, Time"></ion-datetime>
+                    </ion-col>
+                  </ion-row>
+              <ion-row id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="terms" color="danger" (ngModelChange)="statusChange($event)" ></ion-checkbox ><p (click)="changeStatus()">I Would like to pick up the order.</p></ion-row>
+                <ion-button expand="full" id="btncheck" slot="end" color="danger" (click)="order()" >Place Order</ion-button>
+
+  </div>
 
 </ion-content>

@@ -44,9 +44,9 @@
 
 </div>
 
-    <ion-row id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="terms" color="danger"></ion-checkbox ><p (click)="changeStatus()">I agree with Terms and Conditions</p></ion-row>
+    <ion-row *ngIf="cart.length > 0" id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="terms" color="danger"></ion-checkbox ><p (click)="changeStatus()">I agree with Terms and Conditions</p></ion-row>
     
-    <ion-button expand="full" id="btncheck" slot="end" color="danger" (click)="checkout()" >Check Out</ion-button>
+    <ion-button *ngIf="cart.length > 0" expand="full" id="btncheck" slot="end" color="danger" (click)="checkout()" >Check Out</ion-button>
 
   </div>
 </ion-content>
