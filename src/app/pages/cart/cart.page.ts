@@ -54,6 +54,12 @@ export class CartPage implements OnInit {
   }
 
   goback(){
-    this.router.navigate(['/fooddetails']);
+    if(localStorage.getItem('lastURL')){
+      this.router.navigate([localStorage.getItem('lastURL')]);
+      localStorage.removeItem('lastURL')
+    }
+
+    else
+      this.router.navigate(['tabs']);
   }
 }

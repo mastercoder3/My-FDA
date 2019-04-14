@@ -119,10 +119,9 @@ export class FooditemsPage implements OnInit {
   }
 
   fooddetails(item){
-    this.router.navigate(['/fooddetails',{
-      data: JSON.stringify(item),
-      type: this.type
-    }]);
+    this.router.navigate(['/fooddetails']);
+    localStorage.setItem('data', JSON.stringify(item))
+    localStorage.setItem('type', this.type);
   }
   goback(){
     this.router.navigate(['../']);
