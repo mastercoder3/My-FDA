@@ -11,6 +11,8 @@ export class CartPage implements OnInit {
 
   cart:Array<any>;
   total: number = 0;
+  terms=false; 
+
   constructor(private router: Router, private helper: HelperService) { }
 
   ngOnInit() {
@@ -25,7 +27,9 @@ export class CartPage implements OnInit {
     this.total = 0;
     this.cart.forEach(a =>{
       this.total += a.price;
-    })
+    });
+    let discountAmount = (5*this.total)/100;
+    this.total -= discountAmount;
   }
 
   addToQuantity(i){
@@ -61,5 +65,20 @@ export class CartPage implements OnInit {
 
     else
       this.router.navigate(['tabs']);
+  }
+
+  checkout(){
+    if(this.terms){
+      this.router.navigate(['checkout']);
+    }
+    else  
+      this.helper.presentToast('Please Accept Terms and Conditions.');
+  }
+
+  changeStatus(){
+    if(this.terms)
+      this.terms = false;
+    else
+      this.terms = true;
   }
 }

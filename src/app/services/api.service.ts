@@ -39,5 +39,9 @@ export class ApiService {
   getPastaExtras(){
     return this.afs.collection('pastaextras').snapshotChanges();
   }
+
+  getAllDeals(){
+    return this.afs.collection('deals').snapshotChanges();
+  }
   
 }

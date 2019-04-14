@@ -9,7 +9,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: '../home/home.module#HomePageModule'
+        redirectTo: 'home',
+        pathMatch: 'full'
       },
       {
         path: 'home',

@@ -7,9 +7,9 @@
 <ion-content class="container">
   <div class="body">
     
-    <div class="content">
+    <div class="content" *ngFor="let item of deals" (click)="addToCart(item)" >
       <div class="image">
-        <img src="assets/imgs/pepperpizza.png">
+        <img src="{{item?.imageURL || 'assets/imgs/pepperpizza.png'}}">
         <div class="tag">
           <p>Hot Deals</p>
         </div>
@@ -17,17 +17,18 @@
       <div class="caption">
         <ion-row>
           <ion-col size="9">
-            <h1>Pepperoni Pizza</h1>
-            <p>Hot and spicy pizza with hot pepper and cheese</p>
+            <h1>{{item.title}}</h1>
+            <p>{{item.items}}</p>
           </ion-col>
           <ion-col></ion-col>
           <ion-col size="2">
-              <ion-row><ion-icon name="star" id="rating"></ion-icon><p id="rating">5.00</p></ion-row>
+              <ion-row><p id="rating">{{item.price}} &euro;</p></ion-row>
           </ion-col>
         </ion-row>
       </div>
     </div>
-
+  </div>
+<!-- 
     <div class="content">
         <div class="image">
           <img src="assets/imgs/bbqpizza.png">
@@ -70,7 +71,7 @@
           </div>
         </div>
   
-  </div>
+  </div> -->
   
   <!-- <div class="body">
      
