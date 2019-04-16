@@ -22,6 +22,8 @@ export class CartPage implements OnInit {
     });
   }
 
+  //new branch
+
   setTotal(){
     this.total = 0;
     this.cart.forEach(a =>{
