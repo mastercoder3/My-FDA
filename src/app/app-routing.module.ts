@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'cart', loadChildren: './pages/cart/cart.module#CartPageModule' },
    { path: 'fooditems', loadChildren: './pages/fooditems/fooditems.module#FooditemsPageModule' },
   { path: 'fooddetails', loadChildren: './pages/fooddetails/fooddetails.module#FooddetailsPageModule' },
-  { path: 'checkout', loadChildren: './pages/checkout/checkout.module#CheckoutPageModule' }
+  { path: 'checkout', loadChildren: './pages/checkout/checkout.module#CheckoutPageModule' },
+  { path: 'info', loadChildren: './pages/info/info.module#InfoPageModule' },
 ];
 
 @NgModule({

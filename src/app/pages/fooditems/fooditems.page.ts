@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { map } from 'rxjs/operators';
+import { TabsPageModule } from 'src/app/tabs/tabs.module';
 
 @Component({
   selector: 'app-fooditems',

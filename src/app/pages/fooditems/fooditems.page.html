@@ -1,12 +1,13 @@
 <div class="containerr">
     <div class="header">
-        <div class="back-icon"><ion-icon name="arrow-round-back" (click)="goback()"></ion-icon></div>
+        <div class="back-icon"><ion-icon name="ios-arrow-back" (click)="goback()"></ion-icon></div>
         <img src="{{image}}">
         <div class="header-tag">
           <h1>{{type}}</h1>
         </div>                     
     </div>
 </div>
+
 <ion-content class="container">
     
 
@@ -15,21 +16,24 @@
 
        <div class=content *ngFor="let item of food">
           <ion-row >
-            <ion-col size="10" (click)="fooddetails(item)" no-padding>
+            <ion-col size="10" (click)="fooddetails(item)">
               <h1>{{item?.title}}</h1>
               <p>{{item?.ingredients}}</p>
             </ion-col>
-            <ion-col no-padding size="2">
+            <ion-col size="2">
               <p id="price-tag" style="font-weight: bolder;" *ngIf="type === 'pizza' ">{{item?.price[0]}} &euro;</p>
               <p id="price-tag" style="font-weight: bolder;" *ngIf="type !== 'pizza' ">{{item?.price}} &euro;</p>
             </ion-col>
             <hr>
           </ion-row>
        </div>
+       <div class="footer">
+        &nbsp;
+       </div>
+       <br> 
        <br>
        <br>
-       
+      </div>
 
-    </div>
   
 </ion-content>

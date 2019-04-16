@@ -14,15 +14,19 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        loadChildren: '../home/home.module#HomePageModule'
+        loadChildren: '../pages/home/home.module#HomePageModule'
       },
       {
         path: 'deals',
         loadChildren: '../pages/deals/deals.module#DealsPageModule'
       },
       {
-        path: 'info',
-        loadChildren: '../pages/info/info.module#InfoPageModule'
+        path: 'cart',
+        loadChildren: '../pages/cart/cart.module#CartPageModule'
+      },
+      {
+        path: 'fooditems',
+        loadChildren: '../pages/fooditems/fooditems.module#FooditemsPageModule'
       }
     ],
     

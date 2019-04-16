@@ -3,10 +3,10 @@
         <ion-row>
           <ion-col size="2" id="back">
             <ion-buttons>
-              <ion-icon name="arrow-round-back" (click)="goback()"></ion-icon>
+              <ion-icon name="ios-arrow-back" (click)="goback()"></ion-icon>
             </ion-buttons>
           </ion-col>
-          <ion-col size="7">
+          <ion-col size="8.5">
             <ion-title>
               Cart
             </ion-title>
@@ -19,7 +19,7 @@
 <ion-content>
   <div class="body">
     <h1><b style="color:rgb(190, 34, 34)">Total</b> : {{total | number : '1.2'}} &euro;</h1>
-    <img src="assets/imgs/discount.png" style="float: left; width: 70px; position: fixed; right: 10px; top: 38px; z-index: 100;">
+    <img id="disc" src="assets/imgs/discount.png" style="float: left; width: 70px; position: fixed; right: 10px; top: 38px; z-index: 100;">
     <div class="item">
     <hr id="sep">
 
@@ -31,9 +31,9 @@
         <h3>{{item?.itemTitle}}</h3>
         <p>{{item?.itemIngredients}}</p>
         <p *ngIf="item.extras.length > 0">{{item?.extras}}</p>
-        <p><b style="color:rgb(190, 34, 34); margin-right: 15%;">{{item?.price}} &euro;</b><b style=" margin-right: 15%;">{{item?.size}}</b><b style="color:rgb(190, 34, 34);" (click)="delete(i)" >Delete</b></p>
+        <p><b  id="price" style="color:rgb(190, 34, 34); margin-right: 15%;">{{item?.price}} &euro;</b><b style=" margin-right: 15%;">{{item?.size}}</b><b style="color:rgb(190, 34, 34);" (click)="delete(i)" >Delete</b></p>
       </ion-col>
-      <ion-col size="2">
+      <ion-col class="counter" size="2">
         <ion-icon name="add-circle-outline" id="add" (click)="addToQuantity(i)" ></ion-icon>
         <p style="margin: 0 0 0 0; padding-left: 9px;">{{item?.quantity}}</p>
         <ion-icon name="remove-circle-outline" id="remove" (click)="removeFromQuantity(i)" ></ion-icon>
@@ -46,7 +46,7 @@
 
     <ion-row *ngIf="cart.length > 0" id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="terms" color="danger"></ion-checkbox ><p (click)="changeStatus()">I agree with Terms and Conditions</p></ion-row>
     
-    <ion-button *ngIf="cart.length > 0" expand="full" id="btncheck" slot="end" color="danger" (click)="checkout()" >Check Out</ion-button>
+    <ion-button *ngIf="cart.length > 0" expand="full" color="danger" id="btncheck" slot="end" (click)="checkout()" >Check Out</ion-button>
 
   </div>
 </ion-content>

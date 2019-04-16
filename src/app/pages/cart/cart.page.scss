@@ -9,8 +9,7 @@ ion-toolbar{
   }
   ion-title{
     --color: white;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
 
   }
 ion-content{
@@ -69,10 +68,10 @@ ion-content{
 
 #checkbox{
     width: 80%;
-    height: 10%;
-    margin-top: 30%;
-    margin-left: auto;
-    margin-right: auto;
+    height: 10%;;
+    position: fixed;
+    bottom: 2%;
+    left: 10%;
     ion-checkbox{
         vertical-align: middle;
         margin-left: 5%;
@@ -84,4 +83,414 @@ ion-content{
         margin: 0%;
         font-size: 14px;
     }
+}
+
+#btncheck{
+    width: 100%;
+    background-color: rgb(190, 34, 34);
+    color: white;
+    position: fixed;
+    bottom: 0%;
+    
+}
+@media (min-width: 320px) and  (max-width: 350px){
+   .body{
+       #disc{
+        float: left; width: 70px; position: fixed; right: 10px; top: 25px !important; z-index: 100;
+       }
+       
+   }
+   #checkbox{
+    width: 80%;
+    height: 10%;;
+    position: fixed;
+    bottom: 4% !important;
+    left: 12%;
+    ion-checkbox{
+        vertical-align: middle;
+        margin-left: 5%;
+        margin-right: 4%;
+        height: 20px;
+        width: 20px;    
+        position: relative;
+        top: -2px;
+    }
+    p{
+        margin: 0%;
+        font-size: 14px;
+    }
+}
+#text{
+    #price{
+        margin-right: 6% !important;
+    }
+}
+#btncheck{
+    width: 100%;
+    background-color: rgb(190, 34, 34) !important;
+    color: white;
+    position: fixed;
+    bottom: 0%;
+    
+}
+}   
+@media (min-width: 370px) and  (max-width: 409px){
+    .body{
+        #disc{
+         float: left; width: 70px; position: fixed; right: 10px; top: 25px !important; z-index: 100;
+        }
+        
+    }
+    #checkbox{
+     width: 80%;
+     height: 10%;;
+     position: fixed;
+     bottom: 4% !important;
+     left: 12%;
+     ion-checkbox{
+         vertical-align: middle;
+         margin-left: 5%;
+         margin-right: 4%;
+         height: 20px;
+         width: 20px;    
+         position: relative;
+         top: -2px;
+     }
+     p{
+         margin: 0%;
+         font-size: 14px;
+     }
+ }
+ 
+ #btncheck{
+     width: 100%;
+     background-color: rgb(190, 34, 34) !important;
+     color: white;
+     position: fixed;
+     bottom: 0%;
+     
+ }
+ }   
+ @media (min-width: 412px) and  (max-width: 414px){
+    .body{
+        #disc{
+         float: left; width: 70px; position: fixed; right: 10px; top: 25px !important; z-index: 100;
+        }
+        
+    }
+    #checkbox{
+     width: 100%;
+     height: 10%;;
+     text-align: center;
+     position: fixed;
+     bottom: 4% !important;
+     left: 12%;
+     ion-checkbox{
+         vertical-align: middle;
+         margin-left: 5%;
+         margin-right: 4%;
+         height: 20px;
+         width: 20px;    
+         position: relative;
+         top: -2px;
+     }
+     p{
+         margin: 0%;
+         font-size: 14px;
+     }
+ }
+ 
+ #btncheck{
+     width: 100%;
+     background-color: rgb(190, 34, 34) !important;
+     color: white;
+     position: fixed;
+     bottom: 0%;
+     
+ }
+ }   
+@media (min-width: 480px) and  (max-width: 740px){
+    
+    h1{
+        font-size: 30px !important;
+        margin-top: 10%;
+        text-align: center;
+    }
+    .item #sep{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        height: 1px !important;
+        opacity: 0.6;
+        visibility: visible;
+        z-index: 111;
+    }
+
+#text{
+    margin-top: 2%;
+    h3{
+        font-size: 26px !important;
+        color: rgb(190, 34, 34);
+        margin-top: -2%;
+    }
+    p{  
+        padding-top: 5px !important;
+        font-size: 20px;
+        margin-top: -2%;
+    }
+}
+#add{
+    font-size: 28px;
+    margin-top: 10px !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px !important;
+}
+#remove{
+    font-size: 28px;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+}    
+.counter{
+    text-align: center;
+    ion-icon{font-size: 2rem !important;}
+    p{font-size: 1.5rem !important;
+    padding-top: 5px;
+    margin-left: -6% !important;
+    margin-bottom: 2px !important;}
+} 
+}
+@media (min-width: 760px) and  (max-width: 1020px){
+   
+    .body{
+        #disc{
+         float: left; width: 120px; height: 80px; position: fixed; right: 10px; top: 25px !important; z-index: 100;
+        }
+        
+    } 
+    h1{
+        font-size: 34px !important;
+        margin-top: 10%;
+        text-align: center;
+    }
+
+    .item #sep{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        height: 1px !important;
+        opacity: 0.6;
+        visibility: visible;
+        z-index: 111;
+    }
+
+#text{
+    margin-top: 2%;
+    h3{
+        font-size: 28px !important;
+        color: rgb(190, 34, 34);
+        margin-top: -2%;
+    }
+    p{  
+        padding-top: 10px !important;
+        font-size: 24px;
+        margin-top: -2%;
+    }
+}
+#add{
+    font-size: 36px;
+    margin-top: 15px !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px !important;
+}
+#remove{
+    font-size: 36px;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#checkbox{
+    width: 80%;
+    height: 10%;;
+    position: fixed;
+    bottom: 4% !important;
+    left: 12%;
+    ion-checkbox{
+        vertical-align: middle;
+        margin-left: 5%;
+        margin-right: 4%;
+        height: 30px;
+        width: 30px;    
+        position: relative;
+        top: -1px;
+    }
+    p{
+        margin: 0%;
+        font-size: 26px;
+    }
+}   
+.counter{
+    p{font-size: 2rem !important;
+    padding-top: 5px;
+    margin-bottom: -2px !important;}
+} 
+}
+@media (min-width: 1024px) and  (max-width: 1280px){
+   
+    .body{
+        #disc{
+         float: left; width: 120px; height: 80px; position: fixed; right: 10px; top: 25px !important; z-index: 100;
+        }
+        
+    } 
+    h1{
+        font-size: 36px !important;
+        margin-top: 10%;
+        text-align: center;
+    }
+
+    .item #sep{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        height: 1px !important;
+        opacity: 0.6;
+        visibility: visible;
+        z-index: 111;
+    }
+
+#text{
+    margin-top: 2%;
+    h3{
+        font-size: 30px !important;
+        color: rgb(190, 34, 34);
+        margin-top: -2%;
+    }
+    p{  
+        padding-top: 10px !important;
+        font-size: 28px;
+        margin-top: -2%;
+    }
+}
+#add{
+    font-size: 38px;
+    margin-top: 15px !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px !important;
+}
+#remove{
+    font-size: 38px;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#checkbox{
+    width: 80%;
+    height: 10%;;
+    position: fixed;
+    bottom: 4% !important;
+    left: 20%;
+    ion-checkbox{
+        vertical-align: middle;
+        margin-left: 5%;
+        margin-right: 4%;
+        height: 30px;
+        width: 30px;    
+        position: relative;
+        top: -1px;
+    }
+    p{
+        margin: 0%;
+        font-size: 30px;
+    }
+}    
+.counter{
+    p{font-size: 2rem !important;
+    padding-top: 5px;
+    margin-bottom: -8px !important;}
+}
+}
+
+@media (min-width: 1288px) and  (max-width: 1800px){
+   
+    .body{
+        #disc{
+         float: left; width: 120px; height: 80px; position: fixed; right: 10px; top: 25px !important; z-index: 100;
+        }
+        
+    } 
+    h1{
+        font-size: 36px !important;
+        margin-top: 10%;
+        text-align: center;
+    }
+
+    .item #sep{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        height: 1px !important;
+        opacity: 0.6;
+        visibility: visible;
+        z-index: 111;
+    }
+
+#text{
+    margin-top: 2%;
+    h3{
+        font-size: 30px !important;
+        color: rgb(190, 34, 34);
+        margin-top: -2%;
+    }
+    p{  
+        padding-top: 10px !important;
+        font-size: 28px;
+        margin-top: -2%;
+    }
+}
+#add{
+    font-size: 38px;
+    margin-top: 15px !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px !important;
+}
+#remove{
+    font-size: 38px;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#checkbox{
+    width: 80%;
+    height: 10%;;
+    position: fixed;
+    bottom: 4% !important;
+    left: 20%;
+    ion-checkbox{
+        vertical-align: middle;
+        margin-left: 5%;
+        margin-right: 4%;
+        height: 30px;
+        width: 30px;    
+        position: relative;
+        top: -1px;
+    }
+    p{
+        margin: 0%;
+        font-size: 30px;
+    }
+}    
+.counter{
+    p{font-size: 2rem !important;
+    padding-top: 5px;
+    margin-bottom: -10px !important;}
+}
 }

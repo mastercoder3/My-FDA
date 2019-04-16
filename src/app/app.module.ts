@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ModalComponent } from './modal/modal.component';
+import { ModalComponent } from './pages/modal/modal.component';
 import { ApiService } from './services/api.service';
 import { HelperService } from './services/helper.service';
 
@@ -18,9 +18,13 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { TabsPageModule } from './tabs/tabs.module';
+
+
+
 
 @NgModule({
-  declarations: [AppComponent,ModalComponent],
+  declarations: [AppComponent,ModalComponent,],
   entryComponents: [ModalComponent],
   imports: [
     BrowserModule,
@@ -35,6 +39,7 @@ import { environment } from '../environments/environment';
     ApiService,
     HelperService,
     StatusBar,
+    
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

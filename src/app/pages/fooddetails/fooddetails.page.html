@@ -3,7 +3,7 @@
       <ion-row>
         <ion-col size="2">
           <ion-buttons>
-            <ion-icon name="arrow-round-back" (click)="goback()"></ion-icon>
+            <ion-icon name="ios-arrow-back" (click)="goback()"></ion-icon>
           </ion-buttons>
         </ion-col>
         <ion-col size="8">
@@ -11,7 +11,7 @@
         </ion-col>
         <ion-col size="2">
             <ion-badge id="notifications-badge" color="primary">{{cartItems}}</ion-badge>
-            <ion-icon name="cart" id="cart-icon"  (click)="openCart()"></ion-icon>
+            <ion-icon name="md-cart" id="cart-icon"  (click)="openCart()"></ion-icon>
         </ion-col>
       </ion-row>
   </ion-toolbar>
@@ -22,10 +22,9 @@
     
     <div class="upper-div">
         <div class="icon-div">
-          <ion-icon name="share" id="share"></ion-icon>
+          <!-- <ion-icon name="MD-share" id="share"></ion-icon> -->
         </div>
-        <img src="{{image}}" style="height: 163px;
-        width: 163px;" >
+        <img src="{{image}}" >
     </div>
 
     <div class="body-content">
@@ -66,13 +65,13 @@
         </div>
       <hr>
       <br>
-      <ion-row>
+      <ion-row class="counter">
         <ion-col size="5">
             <ion-icon (click)="removeFromQuantity()"
              name="remove-circle-outline" style="float: right; font-size: 2em; color: red; margin-left: 0 !important;"></ion-icon>
         </ion-col>
-          <ion-col size="2">
-              <h4 style="text-align: center; width: 100%; position: relative; top: -12px;">{{quantity}}</h4>
+          <ion-col size="2" no-padding>
+              <h2>{{quantity}}</h2>
           </ion-col>
          <ion-col col="5">
             <ion-icon (click)="addToQuantity()"
@@ -85,8 +84,8 @@
       <ion-row class="footer">
         <ion-col></ion-col>
             <ion-col>
-              <ion-button  id="btn-cart" (click)="cart()">
-                <ion-icon name="cart" style="font-size:32px;">
+              <ion-button  class="btn-cart" (click)="cart()">
+                <ion-icon name="md-cart" style="font-size:32px;">
                 </ion-icon>
               </ion-button>
         </ion-col> 

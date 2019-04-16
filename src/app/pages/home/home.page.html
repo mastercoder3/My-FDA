@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="container">
+  <div class="body">
+    <div class="pizza">
+      <img (click)="fooditem('pizza')" src="assets/imgs/pizzat.jpg">
+      <div class="caption">
+        <h1>Pizza</h1>
+      </div>
+    </div>
+    <div class="pizza">
+      <img src="assets/imgs/pasta.png" (click)="fooditem('pasta')">
+      <div class="caption">
+          <h1>Pasta</h1>
+        </div>
+    </div>
+    <div class="pizza">
+      <img src="assets/imgs/Salad.png" (click)="fooditem('salad')">
+      <div class="caption">
+          <h1>Salad</h1>
+        </div>
+      </div>
+    <div class="pizza">
+      <img src="assets/imgs/appetizers.png" (click)="fooditem('appetizers')">
+      <div class="caption">
+          <h1>Appetizers</h1>
+        </div>
+      </div>
+    <div class="pizza">
+      <img src="assets/imgs/desserts.png" (click)="fooditem('desserts')">
+      <div class="caption">
+          <h1>Desserts</h1>
+        </div>
+      </div>
+    <div class="pizza">
+      <img src="assets/imgs/beverages.png" (click)="fooditem('beverages')">
+      <div class="caption">
+          <h1>Beverages</h1>
+        </div>
+      </div>
+  </div>
+</ion-content>

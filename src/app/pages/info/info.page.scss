@@ -1,6 +1,11 @@
 ion-toolbar{
     --background:  rgb(190, 34, 34);
+    ion-icon{
+        color:white;
+        font-size: 26px;
+    }
 }
+
 ion-title{
     color: white;
 }

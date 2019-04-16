@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ModalComponent } from '../modal/modal.component';
+import { ModalComponent } from '../pages/modal/modal.component';
 import { ModalController, ToastController, AlertController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 
