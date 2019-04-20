@@ -18,8 +18,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-import { TabsPageModule } from './tabs/tabs.module';
-
+import { Firebase } from '@ionic-native/firebase/ngx';
+import { FcmService } from './services/fcm.service';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 
 
@@ -39,8 +40,10 @@ import { TabsPageModule } from './tabs/tabs.module';
     ApiService,
     HelperService,
     StatusBar,
-    
+    Firebase,
+    FcmService,
     SplashScreen,
+    LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
