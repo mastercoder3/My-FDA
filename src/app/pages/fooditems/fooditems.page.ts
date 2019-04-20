@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { map } from 'rxjs/operators';
 import { TabsPageModule } from 'src/app/tabs/tabs.module';
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-fooditems',
@@ -15,7 +16,7 @@ export class FooditemsPage implements OnInit {
   food;
   image;
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private helper: HelperService) { }
 
   ngOnInit() {
      this.route.params.subscribe(res =>{
@@ -120,7 +121,9 @@ export class FooditemsPage implements OnInit {
   }
 
   fooddetails(item){
-    this.router.navigate(['/fooddetails']);
+    this.router.navigate(['/tabs/fooddetails']);
+    this.helper.setData(item);
+    this.helper.setType(this.type);
     localStorage.setItem('data', JSON.stringify(item))
     localStorage.setItem('type', this.type);
   }

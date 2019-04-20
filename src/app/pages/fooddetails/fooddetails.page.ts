@@ -24,9 +24,11 @@ export class FooddetailsPage implements OnInit {
   constructor(public modalController: ModalController, private helper:HelperService, private router: Router, private actived: ActivatedRoute) { }
 
   ngOnInit() {
-    this.product = JSON.parse(localStorage.getItem('data'));
-    this.type = localStorage.getItem('type');
-      if(this.type === 'pizza')
+    this.helper.getData().subscribe(data =>{
+      this.helper.getType().subscribe(type =>{
+        this.type = type;
+        this.product = data;
+        if(this.type === 'pizza')
         this.image = 'assets/imgs/cartpizza.png';
       else if(this.type === 'pasta'){
         this.image = 'assets/imgs/pasta.png';
@@ -54,6 +56,11 @@ export class FooddetailsPage implements OnInit {
         this.basePrice = this.product.price;
       }
 
+      });
+    })
+    // this.product = JSON.parse(localStorage.getItem('data'));
+    // this.type = localStorage.getItem('type');
+   
     this.helper.getCart().subscribe(res =>{
       if(res.length === 0){
         this.cartItems = ''
@@ -123,7 +130,7 @@ export class FooddetailsPage implements OnInit {
         this.helper.setCart(x);
       }
       this.helper.presentToast('Item Added to Cart.');
-      this.router.navigate(['../'])
+      this.router.navigate(['/tabs/cart'])
     }
     else{
       this.helper.presentToast('Please Select a Size.')

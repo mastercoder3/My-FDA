@@ -27,6 +27,10 @@ const routes: Routes = [
       {
         path: 'fooditems',
         loadChildren: '../pages/fooditems/fooditems.module#FooditemsPageModule'
+      },
+      {
+        path: 'fooddetails',
+        loadChildren: '../pages/fooddetails/fooddetails.module#FooddetailsPageModule'
       }
     ],
     
