@@ -25,6 +25,7 @@ import { ToastComponent } from './pages/toast/toast.component';
 
 
 
+
 @NgModule({
   declarations: [AppComponent,ModalComponent,ToastComponent],
   entryComponents: [ModalComponent, ToastComponent],

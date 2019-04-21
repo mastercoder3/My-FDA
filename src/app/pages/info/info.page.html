@@ -1,19 +1,42 @@
 <ion-header>
-  <ion-toolbar>
-      <ion-buttons>
-          <ion-icon name="ios-arrow-back" (click)="goback()"></ion-icon>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
         </ion-buttons>
-    <ion-title>Information</ion-title>
-  </ion-toolbar>
+        <ion-title style="color: white;">
+          Info
+        </ion-title>
+      </ion-toolbar>
 </ion-header>
 
 <ion-content class="container">
-  <div class="terms">
-    <h1>Terms and Conditions</h1>
+  <ion-list *ngIf="daily" style="background: transparent;">
+      <ion-list-header>
+        <ion-label style="font-size: 1.6em;">Neue Lieferzeiten</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let item of daily[0].timings; let i = index;" style="--background: transparent;">
+        <ion-row style="width: 100%;">
+          <ion-col size="4">{{days[i]}}</ion-col>
+          <ion-col size="8"><b>Öffnen:</b> {{item.from}} - {{item.to}}
+          <br>
+            <b>Schließen:</b> {{item?.breakFrom}} - {{item?.breakTo}}
+        </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
     <hr>
-  </div>
-  <div class="about">
-    <h2>About Us</h2>
-    <hr>
-  </div>
+    <ion-list *ngIf="specialTiming" style="background: transparent;">
+        <ion-list-header>
+          <ion-label style="font-size: 1.6em;">Das heutige Timing</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let item of specialTiming; let i = index;" style="--background: transparent;">
+          <ion-row style="width: 100%;">
+            <ion-col size="4">{{item?.date}}</ion-col>
+            <ion-col size="8"><b>Öffnen:</b> {{item.status === 'open' ? item.from : ''}} - {{item.status === 'open' ? item.to : ''}}
+            <br>
+              <b>Status:</b> {{item?.status === 'close' ? 'Schließen' : 'Öffnen'}}
+          </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
 </ion-content>

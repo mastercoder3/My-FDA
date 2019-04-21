@@ -12,7 +12,9 @@ const routes: Routes = [
    { path: 'fooditems', loadChildren: './pages/fooditems/fooditems.module#FooditemsPageModule' },
   { path: 'fooddetails', loadChildren: './pages/fooddetails/fooddetails.module#FooddetailsPageModule' },
   { path: 'checkout', loadChildren: './pages/checkout/checkout.module#CheckoutPageModule' },
-  { path: 'info', loadChildren: './pages/info/info.module#InfoPageModule' },
+  { path: 'info', loadChildren: './pages/info/info.module#InfoPageModule' },  { path: 'past-orders', loadChildren: './pages/past-orders/past-orders.module#PastOrdersPageModule' },
+  { path: 'about-us', loadChildren: './pages/about-us/about-us.module#AboutUsPageModule' },
+
 ];
 
 @NgModule({

@@ -12,22 +12,22 @@
         <div class="menu-items">
          <ion-row>
 
-          <ion-col>
+          <ion-col (click)="home()">
             <ion-icon name="ios-home"></ion-icon>
             <p>Home</p>
           </ion-col>
           
-          <ion-col>
-            <ion-icon name="ios-apps"></ion-icon>
-            <p>Categories</p>
+          <ion-col (click)="order()" >
+            <ion-icon name="hourglass"></ion-icon>
+            <p>Order History</p>
           </ion-col>
 
           </ion-row>
           <ion-row>
            
-              <ion-col>
-                  <ion-icon name="list"></ion-icon>
-                  <p>List</p>
+              <ion-col (click)="about()">
+                  <ion-icon name="pin"></ion-icon>
+                  <p>About Us</p>
               </ion-col>
               
               <ion-col (click)="info()" >

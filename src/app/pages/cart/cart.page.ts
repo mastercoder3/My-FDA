@@ -112,6 +112,8 @@ export class CartPage implements OnInit {
       this.terms = true;
   }
 
+  show = false;
+
   checkTimings(){
     const Today = new Date();
     let day = Today.getDay();
@@ -126,7 +128,10 @@ export class CartPage implements OnInit {
           let currentTime = Today.getHours()+':'+Today.getMinutes();
           if(currentTime >= x[0].from && currentTime < x[0].to){
             if(currentTime >= x[0].breakFrom && currentTime < x[0].breakTo){
-              this.helper.presentToastModal();
+              if(!this.show){
+                this.helper.presentToastModal();
+                this.show = true;
+              }
               this.closed = true;
             }
             else{
@@ -134,18 +139,50 @@ export class CartPage implements OnInit {
                 this.closed = false;
               }
               else{
-                this.helper.presentToastModal();
+                if(!this.show){
+                  this.helper.presentToastModal();
+                  this.show = true;
+                }
                 this.closed=true;
               }
             }
           }
           else{
+            if(!this.show){
+              this.helper.presentToastModal();
+              this.show = true;
+            }
+            this.closed=true;
+          }
+        }
+      }
+      if(a.did === 'special'){
+        let date = a.timings;
+        let today = `${Today.getFullYear()}-${(Today.getMonth()+1) < 10 ? ('0'+(Today.getMonth()+1)) : (Today.getMonth()+1)}-${(Today.getDate() < 10) ? ('0'+(Today.getDate())) : Today.getDate()}`;
+        let x = date.filter(data => data.date === today && data.status === 'close')
+        if(x.length > 0){
+          if(!this.show){
             this.helper.presentToastModal();
+            this.show = true;
+          }
+          this.closed=true;
+        }
+        x = date.filter(data => data.date === today && data.status === 'open');
+        if(x.length>0){
+          let currentTime = Today.getHours()+':'+Today.getMinutes();
+          if(currentTime >= x[0].from && currentTime < x[0].to)
+            this.closed =false;
+          else{
+            if(!this.show){
+              this.helper.presentToastModal();
+              this.show = true;
+            }
             this.closed=true;
           }
         }
       }
 
     });
+    this.show = false;
   }
 }

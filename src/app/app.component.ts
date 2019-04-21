@@ -32,4 +32,19 @@ export class AppComponent {
     this.menuCtrl.close();
     this.router.navigate(['info'])
   }
+
+  home(){
+    this.menuCtrl.close();
+    this.router.navigate(['/tabs/home'])
+  }
+
+  order(){
+    this.menuCtrl.close();
+    this.router.navigate(['/past-orders'])
+  }
+
+  about(){
+    this.menuCtrl.close();
+    this.router.navigate(['/about-us'])
+  }
 }

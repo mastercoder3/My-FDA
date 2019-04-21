@@ -29,7 +29,8 @@ export class CheckoutPage implements OnInit {
       this.cart = res;
      this.route.params.subscribe(res =>{
        if(res.discount)
-        this.discount = res.discount;
+        this.discount = parseInt(res.discount);
+      this.setTotal();
      })
       
     });
@@ -125,6 +126,7 @@ export class CheckoutPage implements OnInit {
             localStorage.setItem('cart',JSON.stringify(this.cart))
             this.helper.presentToast('Order Placed. Check your Email for Order details.');
             this.router.navigate(['tabs']);
+            this.setOrderHistory();
             
           },err =>{
             this.helper.presentToast('Somthing went wrong!')
