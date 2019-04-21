@@ -45,11 +45,23 @@ export class ApiService {
   }
 
   getAllZipCodes(){
-    return this.afs.collection('zips').snapshotChanges();
+    return this.afs.collection('zips', ref => ref.where('area','>','')).snapshotChanges();
   }
 
   addToOrders(data){
     return this.afs.collection('orders').add(data);
+  }
+
+  getAllCategories(){
+    return this.afs.collection('categories').snapshotChanges();
+  }
+
+  getCategoryItems(id){
+    return this.afs.collection('items', ref => ref.where('id','==',id)).snapshotChanges();
+  }
+
+  getDiscountAmount(){
+    return this.afs.doc('zips/discount').valueChanges();
   }
   
 }

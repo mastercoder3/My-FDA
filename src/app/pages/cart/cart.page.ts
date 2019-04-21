@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HelperService } from 'src/app/services/helper.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-cart',
@@ -12,13 +13,20 @@ export class CartPage implements OnInit {
   cart:Array<any>=[];
   total: number = 0;
   terms=false; 
+  discount;
+  discountAmount;
 
-  constructor(private router: Router, private helper: HelperService) { }
+  constructor(private router: Router, private helper: HelperService, private api: ApiService) { }
 
   ngOnInit() {
     this.helper.getCart().subscribe(res =>{
       this.cart = res;
-      this.setTotal();
+      this.api.getDiscountAmount()
+        .subscribe(res =>{
+          this.discount = res;
+          this.setTotal();
+        })
+      
     });
   }
 
@@ -27,8 +35,11 @@ export class CartPage implements OnInit {
     this.cart.forEach(a =>{
       this.total += a.price;
     });
-    let discountAmount = (5*this.total)/100;
-    this.total -= discountAmount;
+    if(this.discount.amount > 0){
+      this.discountAmount = (this.discount.amount*this.total)/100;
+      this.total -= this.discountAmount;
+    }
+
   }
 
   addToQuantity(i){
@@ -68,6 +79,9 @@ export class CartPage implements OnInit {
 
   checkout(){
     if(this.terms){
+      if(this.discountAmount)
+        this.router.navigate(['checkout',{discount: this.discountAmount}]);
+      else
       this.router.navigate(['checkout']);
     }
     else  

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HelperService } from '../services/helper.service';
 
 @Component({
   selector: 'app-tabs',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
 
-  constructor() { }
+  cartItems;
+
+  constructor(private helper: HelperService) { }
 
   ngOnInit() {
+    this.helper.getCart().subscribe(res =>{
+      if(res.length === 0){
+        this.cartItems = ''
+      }
+      else
+        this.cartItems = res.length;
+    })
   }
 
 }

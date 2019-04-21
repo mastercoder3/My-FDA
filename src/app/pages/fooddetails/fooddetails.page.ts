@@ -16,10 +16,11 @@ export class FooddetailsPage implements OnInit {
   addon: Array<any> = [];
   quantity:number = 1;
   size;
-  basePrice: number;
+  basePrice;
   extras = [];
   clicked = false;
   cartItems;
+  category;
 
   constructor(public modalController: ModalController, private helper:HelperService, private router: Router, private actived: ActivatedRoute) { }
 
@@ -55,6 +56,14 @@ export class FooddetailsPage implements OnInit {
         this.size = this.product.size;
         this.basePrice = this.product.price;
       }
+      else{
+        this.helper.getCategory().subscribe(res =>{
+          this.category = res;
+        });
+        this.image = this.product.imageURL;
+        this.size = this.product.size;
+        this.basePrice = this.product.price;
+      }
 
       });
     })
@@ -84,9 +93,17 @@ export class FooddetailsPage implements OnInit {
 
   }
   goback(){
-    this.router.navigate(['/fooditems', {
+    if(!this.category)
+      this.router.navigate(['/tabs/fooditems', {
       type: this.type
     }]);
+    else{
+      this.router.navigate(['/tabs/fooditems', {
+        type: this.type,
+        catId: this.category.did,
+        data: JSON.stringify(this.category)
+      }]);
+    }
   }
 
   sizeChanged(event,price){
@@ -174,5 +191,9 @@ export class FooddetailsPage implements OnInit {
   openCart(){
     localStorage.setItem('lastURL',this.router.url)
     this.router.navigate(['cart']);
+  }
+
+  checkArray(){
+    return Array.isArray(this.product.size)
   }
 }

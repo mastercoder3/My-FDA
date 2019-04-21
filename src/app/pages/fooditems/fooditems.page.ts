@@ -15,6 +15,8 @@ export class FooditemsPage implements OnInit {
   type;
   food;
   image;
+  catId;
+  category;
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private helper: HelperService) { }
 
@@ -45,7 +47,25 @@ export class FooditemsPage implements OnInit {
         this.getBeverageItems();
         this.image = 'assets/imgs/beverages.png'
       }
+      else if(this.type && res.catId){
+        this.catId = res.catId;
+        this.category = JSON.parse(res.data);
+        this.image = this.category.imageURL;
+        this.getCategoryItems();
+      }
     });
+  }
+
+  getCategoryItems(){
+    this.api.getCategoryItems(this.catId)
+    .pipe(map(actions => actions.map(a => {
+      const data = a.payload.doc.data();
+      const did = a.payload.doc.id;
+      return {did, ...data}
+    })))
+    .subscribe(res =>{
+      this.food = res;
+    })
   }
 
   getBeverageItems(){
@@ -124,6 +144,10 @@ export class FooditemsPage implements OnInit {
     this.router.navigate(['/tabs/fooddetails']);
     this.helper.setData(item);
     this.helper.setType(this.type);
+    if(this.category){
+      this.helper.setCategory(this.category);
+      localStorage.setItem('category',JSON.stringify(this.category));
+    }
     localStorage.setItem('data', JSON.stringify(item))
     localStorage.setItem('type', this.type);
   }

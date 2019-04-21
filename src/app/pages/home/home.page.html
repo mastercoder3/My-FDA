@@ -47,5 +47,11 @@
           <h1>Beverages</h1>
         </div>
       </div>
+      <div class="pizza" *ngFor="let item of categories">
+        <img src="{{item?.imageURL}}" (click)="fooditem(item.title, item)">
+        <div class="caption">
+            <h1>{{item?.title}}</h1>
+          </div>
+        </div>
   </div>
 </ion-content>

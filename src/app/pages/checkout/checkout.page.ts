@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { map } from 'rxjs/operators';
 import { HelperService } from 'src/app/services/helper.service';
@@ -18,14 +18,20 @@ export class CheckoutPage implements OnInit {
   data;
   flagTotal: number = 0;
   delCharges  =0 ;
+  codeArea='';
+  discount; 
 
-  constructor(private router: Router, private api: ApiService, private helper: HelperService) { }
+  constructor(private router: Router, private api: ApiService, private helper: HelperService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getData();
     this.helper.getCart().subscribe(res =>{
       this.cart = res;
-      this.setTotal();
+     this.route.params.subscribe(res =>{
+       if(res.discount)
+        this.discount = res.discount;
+     })
+      
     });
     this.data = {
       name: '',
@@ -45,9 +51,14 @@ export class CheckoutPage implements OnInit {
     this.cart.forEach(a =>{
       this.total += a.price;
     });
-    let discountAmount = (5*this.total)/100;
-    this.total -= discountAmount;
-    this.flagTotal = this.total;
+    if(this.discount){
+      this.total -= this.discount;
+      this.flagTotal = this.total;
+    }
+    else{
+      this.flagTotal = this.total;
+    }
+
   }
 
 
@@ -64,7 +75,7 @@ export class CheckoutPage implements OnInit {
   }
 
   goback(){
-    this.router.navigate(['cart']);
+    this.router.navigate(['/tabs/cart']);
   }
 
   changeStatus(){
@@ -100,9 +111,12 @@ export class CheckoutPage implements OnInit {
     this.data.email !== '' &&
     this.data.address !=='' &&
     this.data.phone !== '' &&
+    this.data.voucer !=='' &&
     this.data.date !== ''){
       if(!this.terms && this.data.code !== ''){
+        this.data.code = this.data.code + ` (${this.codeArea})`;
         this.data.orderDetails = this.cart;
+        this.data.discount = this.discount ? this.discount : 0;
         this.api.addToOrders(this.data)
           .then(res =>{
             this.cart = [];
@@ -145,6 +159,7 @@ export class CheckoutPage implements OnInit {
         this.total = this.flagTotal + x[0].rate; 
         this.delCharges = x[0].rate;
         this.data.total = this.total;
+        this.codeArea = x[0].area;
       }
     else{
       this.helper.presentToast(`Min order for delivery is ${x[0].minOrder}`);

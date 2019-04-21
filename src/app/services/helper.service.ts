@@ -12,7 +12,8 @@ export class HelperService {
   cart: BehaviorSubject<Array<any>>;
   loading;
   data: BehaviorSubject<any>;
-  type: BehaviorSubject<string>
+  type: BehaviorSubject<string>;
+  category: BehaviorSubject<any>;
 
   constructor( public modalController: ModalController, public toastController: ToastController, public alertController: AlertController,
     public loadingController: LoadingController) {
@@ -28,6 +29,18 @@ export class HelperService {
       this.type = new BehaviorSubject<string>(localStorage.getItem('type'));
     else 
       this.type = new BehaviorSubject<string>('');
+    if(localStorage.getItem('category'))
+      this.category = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('category')));
+    else
+      this.category = new BehaviorSubject<any>({});
+  }
+
+  getCategory(){
+    return this.category.asObservable();
+  }
+
+  setCategory(value){
+    return this.category.next(value);
   }
 
   getType(){

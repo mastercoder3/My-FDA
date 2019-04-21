@@ -72,12 +72,12 @@
                   </ion-textarea>
                 </ion-col>
               </ion-row>
-              <ion-row padding *ngIf="!terms" >
+              <ion-row padding  >
                   <ion-col size="2">
                     <ion-icon name="mail-unread" style="color:white;"></ion-icon>
                   </ion-col>
                   <ion-col col="10">
-                      <ion-select placeholder="Postal code" [(ngModel)]="data.code" (ngModelChange)="setNewPrice($event)">
+                      <ion-select placeholder="Postal code" [(ngModel)]="data.code" (ngModelChange)="setNewPrice($event)" [disabled]="terms">
                           <ion-select-option value="{{item?.code}}" *ngFor="let item of zips">{{item?.code}} ({{item?.area}})</ion-select-option>
                         </ion-select>
                   </ion-col>
@@ -88,6 +88,18 @@
                     </ion-col>
                     <ion-col col="10">
                         <ion-datetime display-format="MMM DD, YYYY HH:mm" [(ngModel)]="data.date" placeholder="Pick a Date, Time"></ion-datetime>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row padding  >
+                    <ion-col size="2">
+                      <ion-icon name="document" style="color:white;"></ion-icon>
+                    </ion-col>
+                    <ion-col col="10">
+                        <ion-select placeholder="Bewirtungsbeleg" [(ngModel)]="data.voucher" >
+                            <ion-select-option value="Ja" >Ja</ion-select-option>
+                            <ion-select-option value="Nein" >Nein</ion-select-option>
+
+                          </ion-select>
                     </ion-col>
                   </ion-row>
               <ion-row id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="terms" color="danger" (ngModelChange)="statusChange($event)" ></ion-checkbox ><p (click)="changeStatus()">I Would like to pick up the order.</p></ion-row>
