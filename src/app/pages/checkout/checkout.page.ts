@@ -117,13 +117,15 @@ export class CheckoutPage implements OnInit {
         this.data.code = this.data.code + ` (${this.codeArea})`;
         this.data.orderDetails = this.cart;
         this.data.discount = this.discount ? this.discount : 0;
+        this.data.deliveryFee = this.delCharges ? this.delCharges : 0;
         this.api.addToOrders(this.data)
           .then(res =>{
             this.cart = [];
             this.helper.setCart(this.cart);
             localStorage.setItem('cart',JSON.stringify(this.cart))
             this.helper.presentToast('Order Placed. Check your Email for Order details.');
-            this.router.navigate(['tabs'])
+            this.router.navigate(['tabs']);
+            
           },err =>{
             this.helper.presentToast('Somthing went wrong!')
           })
@@ -138,6 +140,7 @@ export class CheckoutPage implements OnInit {
             localStorage.setItem('cart',JSON.stringify(this.cart))
             this.helper.presentToast('Order Placed. Check your Email for Order details.');
             this.router.navigate(['tabs'])
+            this.setOrderHistory();
           },err =>{
             this.helper.presentToast('Somthing went wrong!')
           })
@@ -148,6 +151,21 @@ export class CheckoutPage implements OnInit {
     }
     else{
       this.helper.presentToast('Please Provide All information.');
+    }
+  }
+
+  setOrderHistory(){
+    if(localStorage.getItem('pastOrder')){
+      let x = JSON.parse(localStorage.getItem('pastOrder'));
+      x.push(this.data);
+      localStorage.setItem('pastOrder',JSON.stringify(x));
+      this.helper.setHistory(x);
+    }
+    else{
+      let x: Array<any> = [];
+      x.push(this.data);
+      localStorage.setItem('pastOrder',JSON.stringify(x));
+      this.helper.setHistory(x);
     }
   }
 

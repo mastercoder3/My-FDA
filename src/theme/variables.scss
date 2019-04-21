@@ -83,6 +83,14 @@
   --background: transparent;
 }
 
+.toastModal .modal-wrapper{
+  --height: 30% !important;
+  --width: 90% !important;
+  --background: transparent;
+  position: fixed;
+  top: 70px;
+}
+
 .alert-radio-label {
   white-space: normal!important;
 }

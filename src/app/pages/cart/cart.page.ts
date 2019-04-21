@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HelperService } from 'src/app/services/helper.service';
 import { ApiService } from 'src/app/services/api.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
@@ -15,6 +16,8 @@ export class CartPage implements OnInit {
   terms=false; 
   discount;
   discountAmount;
+  timings;
+  closed = false;
 
   constructor(private router: Router, private helper: HelperService, private api: ApiService) { }
 
@@ -28,6 +31,16 @@ export class CartPage implements OnInit {
         })
       
     });
+
+    this.api.getTimings()
+      .pipe(map(actions => actions.map(a=>{
+        const data = a.payload.doc.data();
+        const did = a.payload.doc.id;
+        return {did, ...data};
+      })))
+      .subscribe(res =>{
+        this.timings = res;
+      })
   }
 
   setTotal(){
@@ -78,6 +91,10 @@ export class CartPage implements OnInit {
   }
 
   checkout(){
+    this.checkTimings();
+    if(this.closed){
+      return;
+    }
     if(this.terms){
       if(this.discountAmount)
         this.router.navigate(['checkout',{discount: this.discountAmount}]);
@@ -93,5 +110,42 @@ export class CartPage implements OnInit {
       this.terms = false;
     else
       this.terms = true;
+  }
+
+  checkTimings(){
+    const Today = new Date();
+    let day = Today.getDay();
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    //check daily times
+    this.timings.forEach(a =>{
+
+      if(a.did === 'daily'){
+        let times = a.timings;
+        let x = times.filter(data => data.day === days[day]);
+        if(x.length >0 ){
+          let currentTime = Today.getHours()+':'+Today.getMinutes();
+          if(currentTime >= x[0].from && currentTime < x[0].to){
+            if(currentTime >= x[0].breakFrom && currentTime < x[0].breakTo){
+              this.helper.presentToastModal();
+              this.closed = true;
+            }
+            else{
+              if(x[0].status === 'close'){
+                this.closed = false;
+              }
+              else{
+                this.helper.presentToastModal();
+                this.closed=true;
+              }
+            }
+          }
+          else{
+            this.helper.presentToastModal();
+            this.closed=true;
+          }
+        }
+      }
+
+    });
   }
 }

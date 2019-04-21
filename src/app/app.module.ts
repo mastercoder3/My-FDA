@@ -21,12 +21,13 @@ import { environment } from '../environments/environment';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import { FcmService } from './services/fcm.service';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { ToastComponent } from './pages/toast/toast.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent,ModalComponent,],
-  entryComponents: [ModalComponent],
+  declarations: [AppComponent,ModalComponent,ToastComponent],
+  entryComponents: [ModalComponent, ToastComponent],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything

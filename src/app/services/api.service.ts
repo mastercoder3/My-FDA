@@ -63,5 +63,9 @@ export class ApiService {
   getDiscountAmount(){
     return this.afs.doc('zips/discount').valueChanges();
   }
+
+  getTimings(){
+    return this.afs.collection('timing').snapshotChanges();
+  }
   
 }
