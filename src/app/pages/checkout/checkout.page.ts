@@ -27,16 +27,6 @@ export class CheckoutPage implements OnInit {
   constructor(private router: Router, private api: ApiService, private helper: HelperService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getData();
-    this.helper.getCart().subscribe(res =>{
-      this.cart = res;
-     this.route.params.subscribe(res =>{
-       if(res.discount)
-        this.discount = parseInt(res.discount);
-      this.setTotal();
-     })
-      
-    });
     this.data = {
       name: '',
       email: '',
@@ -48,6 +38,19 @@ export class CheckoutPage implements OnInit {
       orderType: 'Delivery',
       total: 0
     }
+    this.getData();
+    this.helper.getCart().subscribe(res =>{
+      this.cart = res;
+     this.route.params.subscribe(res =>{
+       if(res.discount){
+        this.discount = parseFloat(res.discount);
+        this.setTotal();}
+        else
+        this.setTotal();
+     })
+      
+    });
+
     this.setDatePlaceholder();
   }
 
@@ -111,13 +114,13 @@ export class CheckoutPage implements OnInit {
     }
     else{
       this.terms = true;
-      this.data.orderType = 'Self Pickup'
+      this.data.orderType = 'Self Pickup';
       this.total = this.total - this.delCharges;
-      this.data.total = this.data.total - this.delCharges;
+      this.data.total = this.total - this.delCharges;
     }
   }
 
-  statusChange(event){
+  statusChange(event?){
     if(!this.terms){
       this.data.orderType = 'Delivery'
       this.total = this.flagTotal + this.delCharges;
@@ -144,7 +147,7 @@ export class CheckoutPage implements OnInit {
             this.data.email !== '' &&
             this.data.address !=='' &&
             this.data.phone !== '' &&
-            this.data.voucer !=='' &&
+            this.data.voucher !=='' &&
             this.data.date !== ''){
               if(!this.terms && this.data.code !== ''){
                 this.data.code = this.data.code + ` (${this.codeArea})`;

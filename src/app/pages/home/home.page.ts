@@ -7,6 +7,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { ApiService } from 'src/app/services/api.service';
 import {map} from 'rxjs/operators';
 import { HelperService } from 'src/app/services/helper.service';
+import { Subscription } from 'rxjs';
 
 
 
@@ -21,6 +22,7 @@ export class HomePage implements OnInit {
   timings;
   closed =false;
   show = false;
+  ob$: Subscription;
 
   constructor(private router: Router, private api: ApiService,
     private platform: Platform, public fcm: FcmService, private localNotifications: LocalNotifications, private helper: HelperService) {
@@ -40,7 +42,18 @@ export class HomePage implements OnInit {
           });
         })
       )
-      .subscribe()
+      .subscribe();
+      this.ob$ = this.api.getTimings()
+      .pipe(map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const did = a.payload.doc.id;
+        return {did, ...data};
+      })))
+      .subscribe(res =>{
+        this.timings = res;
+        this.checkClosing();
+        this.ob$.unsubscribe();
+      });
     });
   }
 
@@ -59,16 +72,7 @@ export class HomePage implements OnInit {
         this.categories = res;
       });
     
-    this.api.getTimings()
-    .pipe(map(actions => actions.map(a => {
-      const data = a.payload.doc.data();
-      const did = a.payload.doc.id;
-      return {did, ...data};
-    })))
-    .subscribe(res =>{
-      this.timings = res;
-      this.checkClosing();
-    });
+
   }
 
   checkClosing(){
