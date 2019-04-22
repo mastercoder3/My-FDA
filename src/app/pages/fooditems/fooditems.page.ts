@@ -17,6 +17,7 @@ export class FooditemsPage implements OnInit {
   image;
   catId;
   category;
+  loading=true;
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private helper: HelperService) { }
 
@@ -57,6 +58,8 @@ export class FooditemsPage implements OnInit {
   }
 
   getCategoryItems(){
+    this.helper.presentLoading();
+    this.loading = true;
     this.api.getCategoryItems(this.catId)
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
@@ -65,10 +68,20 @@ export class FooditemsPage implements OnInit {
     })))
     .subscribe(res =>{
       this.food = res;
+      this.helper.closeLoading();
+      this.loading = false;
     })
+
+    setTimeout(() =>{
+      if(this.loading){
+          this.helper.closeLoading();
+      }
+    }, 5000); 
   }
 
   getBeverageItems(){
+    this.helper.presentLoading();
+    this.loading = true;
     this.api.getAllBeverages()
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
@@ -77,10 +90,20 @@ export class FooditemsPage implements OnInit {
     })))
     .subscribe(res =>{
       this.food = res;
-    })
+      this.helper.closeLoading();
+      this.loading = false;
+
+    });
+    setTimeout(() =>{
+      if(this.loading){
+          this.helper.closeLoading();
+      }
+    }, 5000); 
   }
 
   getDessertItems(){
+    this.helper.presentLoading();
+    this.loading = true;
     this.api.getAllDesserts()
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
@@ -89,10 +112,21 @@ export class FooditemsPage implements OnInit {
     })))
     .subscribe(res =>{
       this.food = res;
-    })
+      this.helper.closeLoading();
+      this.loading = false;
+
+    });
+
+    setTimeout(() =>{
+      if(this.loading){
+          this.helper.closeLoading();
+      }
+    }, 5000); 
   }
 
   getAppetizerItems(){
+    this.helper.presentLoading();
+    this.loading = true;
     this.api.getAllAppetizers()
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
@@ -101,10 +135,21 @@ export class FooditemsPage implements OnInit {
     })))
     .subscribe(res =>{
       this.food = res;
-    })
+      this.helper.closeLoading();
+      this.loading = false;
+
+    });
+
+    setTimeout(() =>{
+      if(this.loading){
+          this.helper.closeLoading();
+      }
+    }, 5000); 
   }
 
   getPizzaItems(){
+    this.helper.presentLoading();
+    this.loading = true;
     this.api.getAllPizzas()
       .pipe(map(actions => actions.map(a => {
         const data = a.payload.doc.data();
@@ -113,10 +158,21 @@ export class FooditemsPage implements OnInit {
       })))
       .subscribe(res =>{
         this.food = res;
-      })
+        this.helper.closeLoading();
+        this.loading = false;
+
+      });
+
+      setTimeout(() =>{
+        if(this.loading){
+            this.helper.closeLoading();
+        }
+      }, 5000); 
   }
 
   getPastaItems(){
+    this.helper.presentLoading();
+    this.loading = true;
     this.api.getAllPasta()
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
@@ -125,10 +181,21 @@ export class FooditemsPage implements OnInit {
     })))
     .subscribe(res =>{
       this.food = res;
-    })
+      this.helper.closeLoading();
+      this.loading = false;
+
+    });
+
+    setTimeout(() =>{
+      if(this.loading){
+          this.helper.closeLoading();
+      }
+    }, 5000); 
   }
 
   getSaladItems(){
+    this.helper.presentLoading();
+    this.loading = true;
     this.api.getAllSalad()
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
@@ -137,10 +204,20 @@ export class FooditemsPage implements OnInit {
     })))
     .subscribe(res =>{
       this.food = res;
-    })
+      this.helper.closeLoading();
+      this.loading = false;
+
+    });
+
+    setTimeout(() =>{
+      if(this.loading){
+          this.helper.closeLoading();
+      }
+    }, 5000); 
   }
 
   fooddetails(item){
+    
     this.router.navigate(['/tabs/fooddetails']);
     this.helper.setData(item);
     this.helper.setType(this.type);

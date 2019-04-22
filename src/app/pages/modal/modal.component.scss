@@ -1,13 +1,18 @@
 .containter{
     height: 100% !important;
     width: 100% !important;
+    background: white;
+    // border-top-left-radius: 5% !important;
+    // border-top-right-radius: 5% !important;
 }
 
 .extras{
-    height: 100% !important;
+    height: 85% !important;
     width: 100% !important;
     background: white !important;
-    border-radius: 5% !important;
+    // border-top-left-radius: 5% !important;
+    // border-top-right-radius: 5% !important;
+    overflow-y: scroll;
 }
 
 #btn-done{
@@ -25,13 +30,15 @@ ion-list{
     font-weight: bolder !important;
     font-size: 1.4em;
     margin-top: 20px;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .setting-content{
     --width: 85% !important;
     widows: 80% !important;
-    border-radius: 5% !important;
+    // border-top-left-radius: 5% !important;
+    // border-top-right-radius: 5% !important;
 }
 
 .quantity{
