@@ -22,6 +22,7 @@ import { Firebase } from '@ionic-native/firebase/ngx';
 import { FcmService } from './services/fcm.service';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { ToastComponent } from './pages/toast/toast.component';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 
 
@@ -44,6 +45,7 @@ import { ToastComponent } from './pages/toast/toast.component';
     StatusBar,
     Firebase,
     FcmService,
+    ScreenOrientation,
     SplashScreen,
     LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

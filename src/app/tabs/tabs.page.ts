@@ -15,7 +15,7 @@ export class TabsPage implements OnInit {
   ngOnInit() {
     this.helper.getCart().subscribe(res =>{
       if(res.length === 0){
-        this.cartItems = ''
+        this.cartItems = 0;
       }
       else
         this.cartItems = res.length;

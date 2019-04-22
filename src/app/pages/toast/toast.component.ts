@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./toast.component.scss'],
 })
 export class ToastComponent implements OnInit {
+
+  @Input() type;
 
   constructor(private modal: ModalController, private router: Router) { }
 

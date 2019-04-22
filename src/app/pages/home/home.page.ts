@@ -86,18 +86,18 @@ export class HomePage implements OnInit {
           if(currentTime >= x[0].from && currentTime < x[0].to){
             if(currentTime >= x[0].breakFrom && currentTime < x[0].breakTo){
               if(!this.show){
-                this.helper.presentToastModal();
+                this.helper.presentToastModal(1);
                 this.show = true;
               }
               this.closed = true;
             }
             else{
-              if(x[0].status === 'close'){
+              if(x[0].status === 'open'){
                 this.closed = false;
               }
               else{
                 if(!this.show){
-                  this.helper.presentToastModal();
+                  this.helper.presentToastModal(1);
                   this.show = true;
                 }
                 this.closed=true;
@@ -106,7 +106,7 @@ export class HomePage implements OnInit {
           }
           else{
             if(!this.show){
-              this.helper.presentToastModal();
+              this.helper.presentToastModal(1);
               this.show = true;
             }
             this.closed=true;
@@ -119,7 +119,7 @@ export class HomePage implements OnInit {
         let x = date.filter(data => data.date === today && data.status === 'close')
         if(x.length > 0){
           if(!this.show){
-            this.helper.presentToastModal();
+            this.helper.presentToastModal(1);
             this.show = true;
           }
           this.closed=true;
@@ -131,7 +131,7 @@ export class HomePage implements OnInit {
             this.closed =false;
           else{
             if(!this.show){
-              this.helper.presentToastModal();
+              this.helper.presentToastModal(1);
               this.show = true;
             }
             this.closed=true;

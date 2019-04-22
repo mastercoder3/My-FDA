@@ -20,18 +20,18 @@
             <accordion-group *ngFor="let item of orders" heading="{{item?.name}} ({{extractDate(item?.date)}})">
                 <ion-list style="background: transparent;">
                     <ion-list-header>
-                      <ion-label style="font-size: 1.1em;">Total: {{item?.total | number : '1.2'}} &euro; <span *ngIf="item.deliveryFee">
-                        Delivery: {{item?.deliveryFee | number: '1.2'}}
+                      <ion-label style="font-size: 1.1em;">Total: {{item?.total | number : '1.2-2'}} &euro; <span *ngIf="item.deliveryFee">
+                        Delivery: {{item?.deliveryFee | number: '1.2-2'}}
                       </span>
                     <span *ngIf="item.discount">
-                      Discount: {{item?.discount | number: '1.2'}} &euro;
+                      Discount: {{item?.discount | number: '1.2-2'}} &euro;
                     </span> </ion-label>
                     </ion-list-header>
                     <ion-item *ngFor="let order of item.orderDetails; let i = index;" style="--background: transparent;">
                       <ion-row style="width: 100%;">
                         <ion-col size="4">Title: {{order?.itemTitle}}</ion-col>
                         <ion-col size="4">Quantity: {{order?.quantity}}</ion-col>
-                        <ion-col size="4">Price: {{order?.price | number: '1.2'}} &euro;</ion-col>
+                        <ion-col size="4">Price: {{order?.price | number: '1.2-2'}} &euro;</ion-col>
                       </ion-row>
                     </ion-item>
                   </ion-list>

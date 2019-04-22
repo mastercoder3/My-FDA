@@ -58,8 +58,8 @@ export class FooditemsPage implements OnInit {
   }
 
   getCategoryItems(){
-    this.helper.presentLoading();
-    this.loading = true;
+    // this.helper.presentLoading();
+    // this.loading = true;
     this.api.getCategoryItems(this.catId)
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
@@ -68,20 +68,23 @@ export class FooditemsPage implements OnInit {
     })))
     .subscribe(res =>{
       this.food = res;
-      this.helper.closeLoading();
-      this.loading = false;
+    //   if(this.loading){
+    //     this.helper.closeLoading();
+    //     this.loading = false;
+    // }
     })
 
-    setTimeout(() =>{
-      if(this.loading){
-          this.helper.closeLoading();
-      }
-    }, 5000); 
+    // setTimeout(() =>{
+    //   if(this.loading){
+    //       this.helper.closeLoading();
+    //       this.loading = false;
+    //   }
+    // }, 5000); 
   }
 
   getBeverageItems(){
-    this.helper.presentLoading();
-    this.loading = true;
+    // this.helper.presentLoading();
+    // this.loading = true;
     this.api.getAllBeverages()
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
@@ -90,20 +93,23 @@ export class FooditemsPage implements OnInit {
     })))
     .subscribe(res =>{
       this.food = res;
-      this.helper.closeLoading();
-      this.loading = false;
+    //   if(this.loading){
+    //     this.helper.closeLoading();
+    //     this.loading = false;
+    // }
 
     });
-    setTimeout(() =>{
-      if(this.loading){
-          this.helper.closeLoading();
-      }
-    }, 5000); 
+    // setTimeout(() =>{
+    //   if(this.loading){
+    //       this.helper.closeLoading();
+    //       this.loading = false;
+    //   }
+    // }, 5000); 
   }
 
   getDessertItems(){
-    this.helper.presentLoading();
-    this.loading = true;
+    // this.helper.presentLoading();
+    // this.loading = true;
     this.api.getAllDesserts()
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
@@ -112,21 +118,24 @@ export class FooditemsPage implements OnInit {
     })))
     .subscribe(res =>{
       this.food = res;
-      this.helper.closeLoading();
-      this.loading = false;
+    //   if(this.loading){
+    //     this.helper.closeLoading();
+    //     this.loading = false;
+    // }
 
     });
 
-    setTimeout(() =>{
-      if(this.loading){
-          this.helper.closeLoading();
-      }
-    }, 5000); 
+    // setTimeout(() =>{
+    //   if(this.loading){
+    //       this.helper.closeLoading();
+    //       this.loading = false;
+    //   }
+    // }, 5000); 
   }
 
   getAppetizerItems(){
-    this.helper.presentLoading();
-    this.loading = true;
+    // this.helper.presentLoading();
+    // this.loading = true;
     this.api.getAllAppetizers()
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
@@ -135,21 +144,24 @@ export class FooditemsPage implements OnInit {
     })))
     .subscribe(res =>{
       this.food = res;
-      this.helper.closeLoading();
-      this.loading = false;
+    //   if(this.loading){
+    //     this.helper.closeLoading();
+    //     this.loading = false;
+    // }
 
     });
 
-    setTimeout(() =>{
-      if(this.loading){
-          this.helper.closeLoading();
-      }
-    }, 5000); 
+    // setTimeout(() =>{
+    //   if(this.loading){
+    //       this.helper.closeLoading();
+    //       this.loading = false;
+    //   }
+    // }, 5000); 
   }
 
   getPizzaItems(){
-    this.helper.presentLoading();
-    this.loading = true;
+    // this.helper.presentLoading();
+    // this.loading = true;
     this.api.getAllPizzas()
       .pipe(map(actions => actions.map(a => {
         const data = a.payload.doc.data();
@@ -158,21 +170,24 @@ export class FooditemsPage implements OnInit {
       })))
       .subscribe(res =>{
         this.food = res;
-        this.helper.closeLoading();
-        this.loading = false;
+      //   if(this.loading){
+      //     this.helper.closeLoading();
+      //     this.loading = false;
+      // }
 
       });
 
-      setTimeout(() =>{
-        if(this.loading){
-            this.helper.closeLoading();
-        }
-      }, 5000); 
+      // setTimeout(() =>{
+      //   if(this.loading){
+      //       this.helper.closeLoading();
+      //       this.loading = false;
+      //   }
+      // }, 5000); 
   }
 
   getPastaItems(){
-    this.helper.presentLoading();
-    this.loading = true;
+    // this.helper.presentLoading();
+    // this.loading = true;
     this.api.getAllPasta()
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
@@ -181,21 +196,24 @@ export class FooditemsPage implements OnInit {
     })))
     .subscribe(res =>{
       this.food = res;
-      this.helper.closeLoading();
-      this.loading = false;
+    //   if(this.loading){
+    //     this.helper.closeLoading();
+    //     this.loading = false;
+    // }
 
     });
 
-    setTimeout(() =>{
-      if(this.loading){
-          this.helper.closeLoading();
-      }
-    }, 5000); 
+    // setTimeout(() =>{
+    //   if(this.loading){
+    //       this.helper.closeLoading();
+    //       this.loading = false;
+    //   }
+    // }, 5000); 
   }
 
   getSaladItems(){
-    this.helper.presentLoading();
-    this.loading = true;
+    // this.helper.presentLoading();
+    // this.loading = true;
     this.api.getAllSalad()
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
@@ -204,16 +222,19 @@ export class FooditemsPage implements OnInit {
     })))
     .subscribe(res =>{
       this.food = res;
-      this.helper.closeLoading();
-      this.loading = false;
+    //   if(this.loading){
+    //     this.helper.closeLoading();
+    //     this.loading = false;
+    // }
 
     });
 
-    setTimeout(() =>{
-      if(this.loading){
-          this.helper.closeLoading();
-      }
-    }, 5000); 
+    // setTimeout(() =>{
+    //   if(this.loading){
+    //       this.helper.closeLoading();
+    //       this.loading = false;
+    //   }
+    // }, 5000); 
   }
 
   fooddetails(item){

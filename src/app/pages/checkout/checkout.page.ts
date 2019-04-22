@@ -20,6 +20,9 @@ export class CheckoutPage implements OnInit {
   delCharges  =0 ;
   codeArea='';
   discount; 
+  datePlaceholder='';
+  today;
+  timings;
 
   constructor(private router: Router, private api: ApiService, private helper: HelperService, private route: ActivatedRoute) { }
 
@@ -45,6 +48,15 @@ export class CheckoutPage implements OnInit {
       orderType: 'Delivery',
       total: 0
     }
+    this.setDatePlaceholder();
+  }
+
+  setDatePlaceholder(){
+    const Today = new Date();
+    let today = `${Today.getFullYear()}-${(Today.getMonth()+1) < 10 ? ('0'+(Today.getMonth()+1)) : (Today.getMonth()+1)}-${(Today.getDate() < 10) ? ('0'+(Today.getDate())) : Today.getDate()}`;
+    this.today = today;
+    today = today + `T${Today.getHours()<10 ? ('0'+Today.getHours()) : Today.getHours()}:${Today.getMinutes()< 10 ? ('0'+Today.getMinutes()) : Today.getMinutes()}`;
+    this.data.date = today;
   }
 
   setTotal(){
@@ -72,6 +84,17 @@ export class CheckoutPage implements OnInit {
       })))
       .subscribe(res =>{
         this.zips = res;
+      });
+
+      this.api.getTimings()
+      .pipe(map(actions => actions.map(a=>{
+        const data = a.payload.doc.data();
+        const did = a.payload.doc.id;
+        return {did, ...data};
+      })))
+      .subscribe(res =>{
+        this.timings = res;
+        this.checkTimings();
       })
   }
 
@@ -108,52 +131,64 @@ export class CheckoutPage implements OnInit {
   }
 
   order(){
-    if(this.data.name !== '' &&
-    this.data.email !== '' &&
-    this.data.address !=='' &&
-    this.data.phone !== '' &&
-    this.data.voucer !=='' &&
-    this.data.date !== ''){
-      if(!this.terms && this.data.code !== ''){
-        this.data.code = this.data.code + ` (${this.codeArea})`;
-        this.data.orderDetails = this.cart;
-        this.data.discount = this.discount ? this.discount : 0;
-        this.data.deliveryFee = this.delCharges ? this.delCharges : 0;
-        this.api.addToOrders(this.data)
-          .then(res =>{
-            this.cart = [];
-            this.helper.setCart(this.cart);
-            localStorage.setItem('cart',JSON.stringify(this.cart))
-            this.helper.presentToast('Order Placed. Check your Email for Order details.');
-            this.router.navigate(['tabs']);
-            this.setOrderHistory();
-            
-          },err =>{
-            this.helper.presentToast('Somthing went wrong!')
-          })
-      }
-      else if(this.terms){
-        this.data.code = '';
-        this.data.orderDetails = this.cart;
-        this.api.addToOrders(this.data)
-          .then(res =>{
-            this.cart = [];
-            this.helper.setCart(this.cart);
-            localStorage.setItem('cart',JSON.stringify(this.cart))
-            this.helper.presentToast('Order Placed. Check your Email for Order details.');
-            this.router.navigate(['tabs'])
-            this.setOrderHistory();
-          },err =>{
-            this.helper.presentToast('Somthing went wrong!')
-          })
-      }
-      else{
-        this.helper.presentToast('Please Choose a Zip Code');
-      }
+    if(this.data.date.substr(0,this.data.date.indexOf('T')) < this.today){
+      this.helper.presentToast('Invalid Date, Please Choose again.');
     }
     else{
-      this.helper.presentToast('Please Provide All information.');
+      this.checkTimings(this.data.date,1);
+      if(this.closed){
+        return;
+      }
+      else{
+                if(this.data.name !== '' &&
+            this.data.email !== '' &&
+            this.data.address !=='' &&
+            this.data.phone !== '' &&
+            this.data.voucer !=='' &&
+            this.data.date !== ''){
+              if(!this.terms && this.data.code !== ''){
+                this.data.code = this.data.code + ` (${this.codeArea})`;
+                this.data.orderDetails = this.cart;
+                this.data.discount = this.discount ? this.discount : 0;
+                this.data.deliveryFee = this.delCharges ? this.delCharges : 0;
+                this.api.addToOrders(this.data)
+                  .then(res =>{
+                    this.cart = [];
+                    this.helper.setCart(this.cart);
+                    localStorage.setItem('cart',JSON.stringify(this.cart))
+                    this.helper.presentToast('Order Placed. Check your Email for Order details.');
+                    this.router.navigate(['tabs']);
+                    this.setOrderHistory();
+                    
+                  },err =>{
+                    this.helper.presentToast('Somthing went wrong!')
+                  })
+              }
+              else if(this.terms){
+                this.data.code = '';
+                this.data.orderDetails = this.cart;
+                this.api.addToOrders(this.data)
+                  .then(res =>{
+                    this.cart = [];
+                    this.helper.setCart(this.cart);
+                    localStorage.setItem('cart',JSON.stringify(this.cart))
+                    this.helper.presentToast('Order Placed. Check your Email for Order details.');
+                    this.router.navigate(['tabs'])
+                    this.setOrderHistory();
+                  },err =>{
+                    this.helper.presentToast('Somthing went wrong!')
+                  })
+              }
+              else{
+                this.helper.presentToast('Please Choose a Zip Code');
+              }
+            }
+            else{
+              this.helper.presentToast('Please Provide All information.');
+            }
+      }
     }
+    
   }
 
   setOrderHistory(){
@@ -186,6 +221,92 @@ export class CheckoutPage implements OnInit {
       this.data.code = '';
     }
 
+  }
+
+  show=false;
+  closed=false;
+
+  checkTimings(val?,type?){
+    this.closed = false;
+    this.show = false;
+    let Today : Date;
+    let t = 0;
+    if(type)
+      t = type;
+    else
+      t = 2;
+    if(val)
+      Today= new Date(val);
+    else
+      Today = new Date();
+    let day = Today.getDay();
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    //check daily times
+    this.timings.forEach(a =>{
+
+      if(a.did === 'daily'){
+        let times = a.timings;
+        let x = times.filter(data => data.day === days[day]);
+        if(x.length >0 ){
+          let currentTime = `${Today.getHours()<10 ? ('0'+Today.getHours()) : Today.getHours()}:${Today.getMinutes()< 10 ? ('0'+Today.getMinutes()) : Today.getMinutes()}`;
+          if(currentTime >= x[0].from && currentTime < x[0].to){
+            if(currentTime >= x[0].breakFrom && currentTime < x[0].breakTo){
+              if(!this.show){
+                this.helper.presentToastModal(t);
+                this.show = true;
+              }
+              this.closed = true;
+            }
+            else{
+              if(x[0].status === 'close'){
+                this.closed = true;
+                if(!this.show){
+                  this.helper.presentToastModal(t);
+                  this.show = true;
+                }
+              }
+              else{
+                this.closed=false;
+              }
+            }
+          }
+          else{
+            if(!this.show){
+              this.helper.presentToastModal(t);
+              this.show = true;
+            }
+            this.closed=true;
+          }
+        }
+      }
+      if(a.did === 'special'){
+        let date = a.timings;
+        let today = `${Today.getFullYear()}-${(Today.getMonth()+1) < 10 ? ('0'+(Today.getMonth()+1)) : (Today.getMonth()+1)}-${(Today.getDate() < 10) ? ('0'+(Today.getDate())) : Today.getDate()}`;
+        let x = date.filter(data => data.date === today && data.status === 'close')
+        if(x.length > 0){
+          if(!this.show){
+            this.helper.presentToastModal(t);
+            this.show = true;
+          }
+          this.closed=true;
+        }
+        x = date.filter(data => data.date === today && data.status === 'open');
+        if(x.length>0){
+          let currentTime = Today.getHours()+':'+Today.getMinutes();
+          if(currentTime >= x[0].from && currentTime < x[0].to)
+            this.closed =false;
+          else{
+            if(!this.show){
+              this.helper.presentToastModal(t);
+              this.show = true;
+            }
+            this.closed=true;
+          }
+        }
+      }
+
+    });
+    this.show = false;
   }
 
 }

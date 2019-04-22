@@ -4,14 +4,14 @@
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>
-          Cart
+          Warenkorb
         </ion-title>
       </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="body">
-    <h1><b style="color:rgb(190, 34, 34)">Total</b> : {{total | number : '1.2'}} &euro;</h1>
+    <h1><b style="color:rgb(190, 34, 34)">Total</b> : {{total | number : '1.2-2'}} &euro;</h1>
     <img id="disc" src="assets/imgs/discount.png" style="float: left; width: 70px; position: fixed; right: 10px; top: 38px; z-index: 100;">
     <div class="item">
     <hr id="sep">
@@ -24,7 +24,7 @@
         <h3>{{item?.itemTitle}}</h3>
         <p>{{item?.itemIngredients}}</p>
         <p *ngIf="item.extras.length > 0">{{item?.extras}}</p>
-        <p><b  id="price" style="color:rgb(190, 34, 34); margin-right: 15%;">{{item?.price}} &euro;</b><b style=" margin-right: 15%;">{{item?.size}}</b><b style="color:rgb(190, 34, 34);" (click)="delete(i)" >Delete</b></p>
+        <p><b  id="price" style="color:rgb(190, 34, 34); margin-right: 15%;">{{item?.price | number : '1.2-2'}} &euro;</b><b style=" margin-right: 15%;">{{item?.size}}</b><b style="color:rgb(190, 34, 34);" (click)="delete(i)" >Delete</b></p>
       </ion-col>
       <ion-col class="counter" size="2">
         <ion-icon name="add-circle-outline" id="add" (click)="addToQuantity(i)" ></ion-icon>

@@ -106,9 +106,10 @@ export class HelperService {
     return await this.Mymodal.present();
   }
 
-  async presentToastModal(){
+  async presentToastModal(val){
     this.Mymodal = await this.modalController.create({
       component: ToastComponent,
+      componentProps: {type: val},
       cssClass: 'toastModal'
     });
   
