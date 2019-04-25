@@ -24,7 +24,7 @@
         <h3>{{item?.itemTitle}}</h3>
         <p>{{item?.itemIngredients}}</p>
         <p *ngIf="item.extras.length > 0">{{item?.extras}}</p>
-        <p><b  id="price" style="color:rgb(190, 34, 34); margin-right: 15%;">{{item?.price | number : '1.2-2'}} &euro;</b><b style=" margin-right: 15%;">{{item?.size}}</b><b style="color:rgb(190, 34, 34);" (click)="delete(i)" >Delete</b></p>
+        <p><b  id="price" style="color:rgb(190, 34, 34); margin-right: 5%;">{{item?.price | number : '1.2-2'}}&nbsp;&euro;</b><b style=" margin-right: 5%;">{{item?.size}}</b><b style="color:rgb(190, 34, 34);" (click)="delete(i)" >Löschen</b></p>
       </ion-col>
       <ion-col class="counter" size="2">
         <ion-icon name="add-circle-outline" id="add" (click)="addToQuantity(i)" ></ion-icon>
@@ -37,8 +37,14 @@
 
 </div>
 
-    <ion-row *ngIf="cart.length > 0" id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="terms" color="danger"></ion-checkbox ><p (click)="changeStatus()">I agree with Terms and Conditions</p></ion-row>
-    
+    <ion-row *ngIf="cart.length > 0" id="checkbox" style="width: 100%;">
+      <ion-col size="1">
+          <ion-checkbox mode="ios" [(ngModel)]="terms" color="danger"></ion-checkbox >
+      </ion-col>
+      <ion-col size="11">
+          <p ><a routerLink="/about-us">Allgemeine Geschäftsbedingungen</a><span (click)="changeStatus()">, Verkaufs- und Lieferbedingungen akzeptieren</span></p>
+      </ion-col></ion-row>
+    <br>
     <ion-button *ngIf="cart.length > 0" expand="full" color="danger" id="btncheck" slot="end" (click)="checkout()" >Check Out</ion-button>
 
   </div>
