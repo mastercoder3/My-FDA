@@ -147,7 +147,7 @@ export class FooddetailsPage implements OnInit {
         this.helper.setCart(x);
       }
       this.helper.presentToast('Item Added to Cart.');
-      this.router.navigate(['/tabs/cart'])
+      // this.router.navigate(['/tabs/cart'])
     }
     else{
       this.helper.presentToast('Please Select a Size.')

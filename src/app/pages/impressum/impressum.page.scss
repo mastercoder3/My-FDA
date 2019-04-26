@@ -1,0 +1,33 @@
+ion-toolbar{
+    --background: rgb(190, 34, 34);
+    
+  }
+  #main-header{
+    color: white;
+    text-align: center;
+    width: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    font-size: 22px;
+  }
+  
+  ion-icon{
+    color: white;
+    font-size: 24px;
+    margin-left: 10%;
+    padding-top: 2%;
+  }
+  ion-content{
+    --background: url('../../../assets/imgs/background1.png');
+  }
+  .container{
+    height: 100%;
+    width: 100%;
+    background-image: url('../../../assets/imgs/background1.png');
+    background-repeat: repeat-y;
+    padding-left: 10px;
+    padding-right: 10px;
+    h4{
+        font-weight: bolder;
+    }
+  }

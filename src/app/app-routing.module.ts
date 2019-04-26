@@ -12,8 +12,12 @@ const routes: Routes = [
    { path: 'fooditems', loadChildren: './pages/fooditems/fooditems.module#FooditemsPageModule' },
   { path: 'fooddetails', loadChildren: './pages/fooddetails/fooddetails.module#FooddetailsPageModule' },
   { path: 'checkout', loadChildren: './pages/checkout/checkout.module#CheckoutPageModule' },
-  { path: 'info', loadChildren: './pages/info/info.module#InfoPageModule' },  { path: 'past-orders', loadChildren: './pages/past-orders/past-orders.module#PastOrdersPageModule' },
+  { path: 'info', loadChildren: './pages/info/info.module#InfoPageModule' },
+  { path: 'past-orders', loadChildren: './pages/past-orders/past-orders.module#PastOrdersPageModule' },
   { path: 'about-us', loadChildren: './pages/about-us/about-us.module#AboutUsPageModule' },
+  { path: 'terms', loadChildren: './pages/terms/terms.module#TermsPageModule' },
+  { path: 'impressum', loadChildren: './pages/impressum/impressum.module#ImpressumPageModule' },  { path: 'datenschutz', loadChildren: './pages/datenschutz/datenschutz.module#DatenschutzPageModule' },
+
 
 ];
 
