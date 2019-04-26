@@ -116,11 +116,13 @@ export class CheckoutPage implements OnInit {
       this.terms = true;
       this.data.orderType = 'Self Pickup';
       this.total = this.total - this.delCharges;
-      this.data.total = this.total - this.delCharges;
+      this.data.total = this.total;
     }
+    console.log(this.data)
   }
 
-  statusChange(event?){
+  statusChange(event){
+    this.terms = event;
     if(!this.terms){
       this.data.orderType = 'Delivery'
       this.total = this.flagTotal + this.delCharges;
@@ -129,8 +131,9 @@ export class CheckoutPage implements OnInit {
     else{
       this.data.orderType = 'Self Pickup'
       this.total = this.total - this.delCharges;
-      this.data.total = this.data.total - this.delCharges;
+      this.data.total = this.total;
     }
+    console.log(this.data)
   }
 
   order(){
@@ -233,6 +236,7 @@ export class CheckoutPage implements OnInit {
     this.closed = false;
     this.show = false;
     let Today : Date;
+    let lateNight = false;
     let t = 0;
     if(type)
       t = type;
@@ -252,8 +256,42 @@ export class CheckoutPage implements OnInit {
         let x = times.filter(data => data.day === days[day]);
         if(x.length >0 ){
           let currentTime = `${Today.getHours()<10 ? ('0'+Today.getHours()) : Today.getHours()}:${Today.getMinutes()< 10 ? ('0'+Today.getMinutes()) : Today.getMinutes()}`;
-          if(currentTime >= x[0].from && currentTime < x[0].to){
-            if(currentTime >= x[0].breakFrom && currentTime < x[0].breakTo){
+          if(x[0].from > x[0].to){
+            lateNight = true;
+          }
+          if(currentTime >= x[0].from && currentTime < x[0].to && lateNight === false){
+            if(x[0].breakFrom !== "" && x[0].breakTo !== ""){
+              if(currentTime >= x[0].breakFrom && currentTime < x[0].breakTo){
+                if(!this.show){
+                  this.helper.presentToastModal(t);
+                  this.show = true;
+                }
+                this.closed = true;
+              }
+              else{
+                if(x[0].status === 'close'){
+                  this.closed = true;
+                  if(!this.show){
+                    this.helper.presentToastModal(t);
+                    this.show = true;
+                  }
+                }
+                else{
+                  this.closed=false;
+                }
+              }
+            }
+            else if(x[0].status === 'close'){
+              this.closed = true;
+              if(!this.show){
+                this.helper.presentToastModal(t);
+                this.show = true;
+              }
+            }
+         
+          }
+          else if(lateNight){
+            if(currentTime >x[0].to && currentTime < x[0].from ){
               if(!this.show){
                 this.helper.presentToastModal(t);
                 this.show = true;
@@ -261,17 +299,36 @@ export class CheckoutPage implements OnInit {
               this.closed = true;
             }
             else{
-              if(x[0].status === 'close'){
+              if(x[0].breakFrom !== "" && x[0].breakTo !== ""){
+                if(currentTime >= x[0].breakFrom && currentTime < x[0].breakTo){
+                  if(!this.show){
+                    this.helper.presentToastModal(t);
+                    this.show = true;
+                  }
+                  this.closed = true;
+                }
+                else{
+                  if(x[0].status === 'close'){
+                    this.closed = true;
+                    if(!this.show){
+                      this.helper.presentToastModal(t);
+                      this.show = true;
+                    }
+                  }
+                  else{
+                    this.closed=false;
+                  }
+                }
+              }
+              else if(x[0].status === 'close'){
                 this.closed = true;
                 if(!this.show){
                   this.helper.presentToastModal(t);
                   this.show = true;
                 }
               }
-              else{
-                this.closed=false;
-              }
             }
+        
           }
           else{
             if(!this.show){

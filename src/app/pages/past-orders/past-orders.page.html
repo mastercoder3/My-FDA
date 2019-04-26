@@ -16,6 +16,7 @@
     </div>
     <div class="body" id="pastOrders" *ngIf="orders.length > 0">
       <h3 style="color: grey; text-align: center;">Your Previous Orders</h3>
+      <h4 style="text-align: right;"><span (click)="clear()">klar</span><ion-icon name="trash" (click)="clear()" style="position: relative; top: 4px; color: rgb(206, 73, 73);"></ion-icon></h4>
         <accordion>
             <accordion-group *ngFor="let item of orders" heading="{{item?.name}} ({{extractDate(item?.date)}})">
                 <ion-list style="background: transparent;">
@@ -34,6 +35,8 @@
                         <ion-col size="4">Price: {{order?.price | number: '1.2-2'}} &euro;</ion-col>
                       </ion-row>
                     </ion-item>
+                    <br>
+                    <h5 style="text-align: center;"><a (click)="reorder(item)" >Erneut Bestellen</a></h5>
                   </ion-list>
             </accordion-group>
         </accordion>
