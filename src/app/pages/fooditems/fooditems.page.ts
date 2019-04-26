@@ -18,6 +18,7 @@ export class FooditemsPage implements OnInit {
   catId;
   category;
   loading=true;
+  title;
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private helper: HelperService) { }
 
@@ -25,30 +26,37 @@ export class FooditemsPage implements OnInit {
      this.route.params.subscribe(res =>{
       this.type = res.type;
       if(this.type === 'pizza'){
+        this.title = 'Pizza';
         this.getPizzaItems();
         this.image = 'assets/imgs/pepperpizza.png';
       }
       else if(this.type === 'pasta'){
+        this.title = 'Pasta';
         this.getPastaItems();
         this.image = 'assets/imgs/pasta.png';
       }
       else if(this.type === 'salad'){
+        this.title = 'Salate';
         this.getSaladItems();
         this.image = 'assets/imgs/Salad.png'
       }
       else if(this.type === 'appetizers'){
+        this.title = 'Vorspeisen';
         this.getAppetizerItems();
         this.image = 'assets/imgs/appetizers.png'
       }
       else if(this.type === 'desserts'){
+        this.title = 'Desserts';
         this.getDessertItems();
         this.image = 'assets/imgs/desserts.png'
       }
       else if(this.type === 'beverages'){
+        this.title = 'Getränke';
         this.getBeverageItems();
         this.image = 'assets/imgs/beverages.png'
       }
       else if(this.type && res.catId){
+        this.title = this.type;
         this.catId = res.catId;
         this.category = JSON.parse(res.data);
         this.image = this.category.imageURL;

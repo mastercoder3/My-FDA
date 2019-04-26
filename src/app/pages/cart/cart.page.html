@@ -17,10 +17,11 @@
     <hr id="sep">
       
     <ion-row *ngFor="let item of cart; let i = index;">
-      <ion-col size="3">
-        <img src="{{item?.imageURL}}">
+      <ion-col size="1">
+        <!-- <img src="{{item?.imageURL}}"> -->
+        &nbsp;
       </ion-col>
-      <ion-col size="7" id="text">
+      <ion-col size="9" id="text">
         <h3>{{item?.itemTitle}}</h3>
         <p>{{item?.itemIngredients}}</p>
         <p *ngIf="item.extras.length > 0">{{item?.extras}}</p>
@@ -42,10 +43,10 @@
           <ion-checkbox mode="ios" [(ngModel)]="terms" color="danger"></ion-checkbox >
       </ion-col>
       <ion-col size="11">
-          <p ><a routerLink="/about-us">Allgemeine Geschäftsbedingungen</a><span (click)="changeStatus()">, Verkaufs- und Lieferbedingungen akzeptieren</span></p>
+          <p ><a routerLink="/terms">Allgemeine Geschäftsbedingungen</a><span (click)="changeStatus()">, Verkaufs- und Lieferbedingungen akzeptieren</span></p>
       </ion-col></ion-row>
     <br>
-    <ion-button *ngIf="cart.length > 0" expand="full" color="danger" id="btncheck" slot="end" (click)="checkout()" >Check Out</ion-button>
+    <ion-button *ngIf="cart.length > 0" expand="full" color="danger" id="btncheck" slot="end" (click)="checkout()" >Zur Kasse</ion-button>
 
   </div>
 </ion-content>

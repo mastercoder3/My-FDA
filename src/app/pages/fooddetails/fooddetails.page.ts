@@ -146,7 +146,7 @@ export class FooddetailsPage implements OnInit {
         localStorage.setItem('cart',JSON.stringify(x));
         this.helper.setCart(x);
       }
-      this.helper.presentToast('Item Added to Cart.');
+      this.helper.presentToast('In den Warenkorb hinzugefügt');
       // this.router.navigate(['/tabs/cart'])
     }
     else{

@@ -14,7 +14,7 @@
     <div class="noItems" *ngIf="orders.length === 0">
       <h4 style="color: grey; text-align: center;">No Past Orders</h4>
     </div>
-    <div class="body" id="pastOrders">
+    <div class="body" id="pastOrders" *ngIf="orders.length > 0">
       <h3 style="color: grey; text-align: center;">Your Previous Orders</h3>
         <accordion>
             <accordion-group *ngFor="let item of orders" heading="{{item?.name}} ({{extractDate(item?.date)}})">

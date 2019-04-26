@@ -24,77 +24,78 @@
     <br>
       <ion-row padding >
           <ion-col size="2">
-            <ion-icon name="person" style="color:white;"></ion-icon>
+            <ion-icon name="person" style="color:rgba(190, 34, 34,0.6);"></ion-icon>
           </ion-col>
           <ion-col col="10">
-            <ion-input type="text" placeholder="Your Name" [(ngModel)]="data.name"
-              style="border-bottom: 1px white solid; position: relative; bottom: 13px;">
+            <ion-input type="text" placeholder="Name" [(ngModel)]="data.name"
+              style="border-bottom: 1px rgba(190, 34, 34,0.6) solid; position: relative; bottom: 13px;">
             </ion-input>
           </ion-col>
         </ion-row>
         <ion-row padding >
             <ion-col size="2">
-              <ion-icon name="mail" style="color:white;"></ion-icon>
+              <ion-icon name="mail" style="color:rgba(190, 34, 34,0.6);"></ion-icon>
             </ion-col>
             <ion-col col="10">
               <ion-input type="email" placeholder="Email" [(ngModel)]="data.email"
-                style="border-bottom: 1px white solid; position: relative; bottom: 13px;">
+                style="border-bottom: 1px rgba(190, 34, 34,0.6) solid; position: relative; bottom: 13px;">
               </ion-input>
             </ion-col>
           </ion-row>
           <ion-row padding >
               <ion-col size="2">
-                <ion-icon name="mail-open" style="color:white;"></ion-icon>
+                <ion-icon name="mail-open" style="color:rgba(190, 34, 34,0.6);"></ion-icon>
               </ion-col>
               <ion-col col="10">
-                <ion-textarea  placeholder="Your Address" [(ngModel)]="data.address"
-                  style="border-bottom: 1px white solid; position: relative; bottom: 13px;">
+                <ion-textarea  placeholder="Adresse" [(ngModel)]="data.address"
+                  style="border-bottom: 1px rgba(190, 34, 34,0.6) solid; position: relative; bottom: 13px;">
                 </ion-textarea>
               </ion-col>
             </ion-row>
             <ion-row padding >
                 <ion-col size="2">
-                  <ion-icon name="phone-portrait" style="color:white;"></ion-icon>
+                  <ion-icon name="phone-portrait" style="color:rgba(190, 34, 34,0.6);"></ion-icon>
                 </ion-col>
                 <ion-col col="10">
-                  <ion-input type="text" placeholder="Telephone" [(ngModel)]="data.phone"
-                    style="border-bottom: 1px white solid; position: relative; bottom: 13px;">
+                  <ion-input type="text" placeholder="Telefon" [(ngModel)]="data.phone"
+                    style="border-bottom: 1px rgba(190, 34, 34,0.6) solid; position: relative; bottom: 13px;">
                   </ion-input>
                 </ion-col>
               </ion-row>
             <ion-row padding >
                 <ion-col size="2">
-                  <ion-icon name="book" style="color:white;"></ion-icon>
+                  <ion-icon name="book" style="color:rgba(190, 34, 34,0.6);"></ion-icon>
                 </ion-col>
                 <ion-col col="10">
-                  <ion-textarea  placeholder="Notes" [(ngModel)]="data.notes"
-                    style="border-bottom: 1px white solid; position: relative; bottom: 13px;">
+                  <ion-textarea  placeholder="Notizen" [(ngModel)]="data.notes"
+                    style="border-bottom: 1px rgba(190, 34, 34,0.6) solid; position: relative; bottom: 13px;">
                   </ion-textarea>
                 </ion-col>
               </ion-row>
               <ion-row padding  >
                   <ion-col size="2">
-                    <ion-icon name="mail-unread" style="color:white;"></ion-icon>
+                    <ion-icon name="mail-unread" style="color:rgba(190, 34, 34,0.6);"></ion-icon>
                   </ion-col>
-                  <ion-col col="10">
-                      <ion-select placeholder="Postal code" [(ngModel)]="data.code" (ngModelChange)="setNewPrice($event)" [disabled]="terms">
+                  <ion-col col="10"  style="border-bottom: 1px rgba(190, 34, 34,0.6) solid;">
+                      <ion-select placeholder="Ihr Postleitzahl" [(ngModel)]="data.code" (ngModelChange)="setNewPrice($event)" [disabled]="terms">
                           <ion-select-option value="{{item?.code}}" *ngFor="let item of zips">{{item?.code}} ({{item?.area}})</ion-select-option>
                         </ion-select>
                   </ion-col>
                 </ion-row>
                 <ion-row padding >
                     <ion-col size="2">
-                      <ion-icon name="clock" style="color:white;"></ion-icon>
+                      <ion-icon name="clock" style="color:rgba(190, 34, 34,0.6);"></ion-icon>
                     </ion-col>
-                    <ion-col col="10">
+                    <ion-col col="10" style="border-bottom: 1px rgba(190, 34, 34,0.6) solid;">
+                      <small>Für wann möchtest du bestellen</small>
                         <ion-datetime display-format="MMM DD, YYYY HH:mm" [(ngModel)]="data.date" placeholder="Pick a Date, Time"></ion-datetime>
                     </ion-col>
                   </ion-row>
                   <ion-row padding  >
                     <ion-col size="2">
-                      <ion-icon name="document" style="color:white;"></ion-icon>
+                      <ion-icon name="document" style="color:rgba(190, 34, 34,0.6);"></ion-icon>
                     </ion-col>
-                    <ion-col col="10">
+                    <ion-col col="10" style="border-bottom: 1px rgba(190, 34, 34,0.6) solid;">
                         <ion-select placeholder="Bewirtungsbeleg" [(ngModel)]="data.voucher" >
                             <ion-select-option value="Ja" >Ja</ion-select-option>
                             <ion-select-option value="Nein" >Nein</ion-select-option>
@@ -102,8 +103,8 @@
                           </ion-select>
                     </ion-col>
                   </ion-row>
-              <ion-row id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="terms" color="danger" (ngModelChange)="statusChange($event)" ></ion-checkbox ><p (click)="changeStatus()">I Would like to pick up the order.</p></ion-row>
-                <ion-button expand="full" id="btncheck" slot="end" color="danger" (click)="order()" >Place Order</ion-button>
+              <ion-row id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="terms" color="danger" (ngModelChange)="statusChange($event)" ></ion-checkbox ><p (click)="changeStatus()">Ich möchte die Bestellung abholen.</p></ion-row>
+                <ion-button expand="full" id="btncheck" slot="end" color="danger" (click)="order()" >Bestellung abschicken</ion-button>
 
   </div>
 
