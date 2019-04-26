@@ -138,12 +138,12 @@ export class HelperService {
       header: h,
       message: msg,
       buttons: [{
-        text: 'Cancel',
+        text: 'Abbrechen',
         role: 'cancel',
         cssClass: 'secondary',
         handler: func
       }, {
-        text: 'Continue',
+        text: 'Weiter',
         handler: func1
       }]
     });

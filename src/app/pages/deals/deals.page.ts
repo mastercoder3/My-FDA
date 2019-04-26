@@ -42,7 +42,7 @@ export class DealsPage implements OnInit {
     let func1= ()=>{
       this.cart();
     }
-    this.helper.presentAlert('Add to Cart','Do you want to add this To Cart.',func,func1);
+    this.helper.presentAlert('Zu Warenkorb','Möchten Sie es zu Warenkorb hinzufügen.',func,func1);
   }
 
   cart(){

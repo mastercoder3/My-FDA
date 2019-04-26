@@ -23,7 +23,7 @@ import { FcmService } from './services/fcm.service';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { ToastComponent } from './pages/toast/toast.component';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
-
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 
 
@@ -47,6 +47,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
     FcmService,
     ScreenOrientation,
     SplashScreen,
+    CallNumber,
     LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

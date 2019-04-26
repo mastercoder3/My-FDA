@@ -80,6 +80,8 @@ export class HomePage implements OnInit {
     let day = Today.getDay();
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     //check daily times
+    let lateNight = false;
+    let t = 1;
     this.timings.forEach(a =>{
 
       if(a.did === 'daily'){
@@ -87,30 +89,83 @@ export class HomePage implements OnInit {
         let x = times.filter(data => data.day === days[day]);
         if(x.length >0 ){
           let currentTime = Today.getHours()+':'+Today.getMinutes();
-          if(currentTime >= x[0].from && currentTime < x[0].to){
-            if(currentTime >= x[0].breakFrom && currentTime < x[0].breakTo){
+          if(x[0].from > x[0].to){
+            lateNight = true;
+          }
+           if(currentTime >= x[0].from && currentTime < x[0].to && lateNight === false){
+            if(x[0].breakFrom !== "" && x[0].breakTo !== ""){
+              if(currentTime >= x[0].breakFrom && currentTime < x[0].breakTo){
+                if(!this.show){
+                  this.helper.presentToastModal(t);
+                  this.show = true;
+                }
+                this.closed = true;
+              }
+              else{
+                if(x[0].status === 'close'){
+                  this.closed = true;
+                  if(!this.show){
+                    this.helper.presentToastModal(t);
+                    this.show = true;
+                  }
+                }
+                else{
+                  this.closed=false;
+                }
+              }
+            }
+            else if(x[0].status === 'close'){
+              this.closed = true;
               if(!this.show){
-                this.helper.presentToastModal(1);
+                this.helper.presentToastModal(t);
+                this.show = true;
+              }
+            }
+         
+          }
+          else if(lateNight){
+            if(currentTime >x[0].to && currentTime < x[0].from ){
+              if(!this.show){
+                this.helper.presentToastModal(t);
                 this.show = true;
               }
               this.closed = true;
             }
             else{
-              if(x[0].status === 'open'){
-                this.closed = false;
+              if(x[0].breakFrom !== "" && x[0].breakTo !== ""){
+                if(currentTime >= x[0].breakFrom && currentTime < x[0].breakTo){
+                  if(!this.show){
+                    this.helper.presentToastModal(t);
+                    this.show = true;
+                  }
+                  this.closed = true;
+                }
+                else{
+                  if(x[0].status === 'close'){
+                    this.closed = true;
+                    if(!this.show){
+                      this.helper.presentToastModal(t);
+                      this.show = true;
+                    }
+                  }
+                  else{
+                    this.closed=false;
+                  }
+                }
               }
-              else{
+              else if(x[0].status === 'close'){
+                this.closed = true;
                 if(!this.show){
-                  this.helper.presentToastModal(1);
+                  this.helper.presentToastModal(t);
                   this.show = true;
                 }
-                this.closed=true;
               }
             }
+        
           }
           else{
             if(!this.show){
-              this.helper.presentToastModal(1);
+              this.helper.presentToastModal(t);
               this.show = true;
             }
             this.closed=true;

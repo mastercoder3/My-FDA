@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CallNumber } from '@ionic-native/call-number/ngx';
+
 
 @Component({
   selector: 'app-about-us',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsPage implements OnInit {
 
-  constructor() { }
+  constructor(private callNumber: CallNumber) { }
 
   ngOnInit() {
+  }
+
+  call(number){
+    this.callNumber.callNumber(number, true);
   }
 
 }
