@@ -1,5 +1,6 @@
 ion-toolbar{
     --background:  rgb(190, 34, 34);
+    font-family: 'CHEESEPIZZA';
     ion-icon{
         color:white;
         font-size: 26px;
@@ -10,15 +11,18 @@ ion-content{
     height: 100%;
     width: 100%;
     --background: url("../../../assets/imgs/background1.png");
+    font-family: 'CHEESEPIZZA';
 }
 
 ion-title{
     color: white;
+    font-family: 'CHEESEPIZZA';
 }
 
 .container{
     height: 100%;
     width: 100%;
+    font-family: 'CHEESEPIZZA';
 }
 .terms{
     width: 90%;

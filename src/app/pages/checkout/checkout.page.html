@@ -77,20 +77,11 @@
                     <ion-icon name="mail-unread" style="color:rgba(190, 34, 34,0.6);"></ion-icon>
                   </ion-col>
                   <ion-col col="10"  style="border-bottom: 1px rgba(190, 34, 34,0.6) solid;">
-                      <ion-select placeholder="Ihr Postleitzahl" [(ngModel)]="data.code" (ngModelChange)="setNewPrice($event)" [disabled]="terms">
-                          <ion-select-option value="{{item?.code}}" *ngFor="let item of zips">{{item?.code}} ({{item?.area}})</ion-select-option>
+                      <ion-select placeholder="Ihr Postleitzahl" [(ngModel)]="selectCode" (ngModelChange)="setNewPrice($event)" [disabled]="terms">
+                          <ion-select-option value="{{item.did}}" *ngFor="let item of zips">{{item?.code}} ({{item?.area}})</ion-select-option>
                         </ion-select>
                   </ion-col>
                 </ion-row>
-                <ion-row padding >
-                    <ion-col size="2">
-                      <ion-icon name="clock" style="color:rgba(190, 34, 34,0.6);"></ion-icon>
-                    </ion-col>
-                    <ion-col col="10" style="border-bottom: 1px rgba(190, 34, 34,0.6) solid;">
-                      <small>Für wann möchtest du bestellen</small>
-                        <ion-datetime display-format="MMM DD, YYYY HH:mm" [(ngModel)]="data.date" placeholder="Pick a Date, Time"></ion-datetime>
-                    </ion-col>
-                  </ion-row>
                   <ion-row padding  >
                     <ion-col size="2">
                       <ion-icon name="document" style="color:rgba(190, 34, 34,0.6);"></ion-icon>
@@ -101,6 +92,19 @@
                             <ion-select-option value="Nein" >Nein</ion-select-option>
 
                           </ion-select>
+                    </ion-col>
+                  </ion-row>
+                  <!-- <ion-row id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="terms" color="danger" (ngModelChange)="statusChange($event)" ></ion-checkbox ><p (click)="changeStatus()">Schnell wie möglich.</p></ion-row> -->
+                  <ion-row padding >
+                    <ion-col size="2">
+                      <ion-icon name="clock" style="color:rgba(190, 34, 34,0.6); position: relative; top: 50%;"></ion-icon>
+                    </ion-col>
+                    <ion-col col="10" style="border-bottom: 1px rgba(190, 34, 34,0.6) solid;">
+                      <p>Für wann möchtest du bestellen</p>
+                      <!-- <br> -->
+                      <ion-row id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="now" color="danger" (ngModelChange)="statusChange1($event)" style="margin-left: 0px;" ></ion-checkbox ><p (click)="changeStatus1()">Schnell wie möglich.</p></ion-row>
+                        <br>
+                        <ion-datetime [disabled]="now" display-format="MMM DD, YYYY HH:mm" [(ngModel)]="data.preOrder" placeholder="Pick a Date, Time"></ion-datetime>
                     </ion-col>
                   </ion-row>
               <ion-row id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="terms" color="danger" (ngModelChange)="statusChange($event)" ></ion-checkbox ><p (click)="changeStatus()">Ich möchte die Bestellung abholen.</p></ion-row>

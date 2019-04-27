@@ -86,6 +86,7 @@ export class FooddetailsPage implements OnInit {
           if(ress.data)
             this.addon = ress.data.addon;
             this.clicked = false;
+            console.log(this.addon);
         })
       });
       this.clicked = false;
@@ -150,7 +151,7 @@ export class FooddetailsPage implements OnInit {
       // this.router.navigate(['/tabs/cart'])
     }
     else{
-      this.helper.presentToast('Please Select a Size.')
+      this.helper.presentToast('Bitte Größe wählen.')
     }
     
   }

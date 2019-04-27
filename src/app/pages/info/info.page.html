@@ -25,7 +25,7 @@
       </ion-item>
     </ion-list>
     <hr>
-    <ion-list *ngIf="specialTiming" style="background: transparent;">
+    <ion-list *ngIf="specialTiming?.length > 0" style="background: transparent;">
         <ion-list-header>
           <ion-label style="font-size: 1.6em;">Das heutige Timing</ion-label>
         </ion-list-header>
@@ -39,4 +39,47 @@
           </ion-row>
         </ion-item>
       </ion-list>
+      <hr>
+      <ion-list style="background: transparent;">
+        <ion-list-header>
+          <ion-label style="font-size: 1.6em;">Zusatzstoffe</ion-label>
+        </ion-list-header>
+        <ion-item  style="--background: transparent;">
+          <b>1)</b>&nbsp; Mit Farbstoff
+        </ion-item>
+        <ion-item  style="--background: transparent;">
+          <b>2)</b>&nbsp; Mit Konservierungsstoff
+        </ion-item>
+        <ion-item  style="--background: transparent;">
+          <b>3)</b>&nbsp; Mit Antioxidationsmittel
+        </ion-item>
+        <ion-item  style="--background: transparent;">
+          <b>4)</b>&nbsp; Mit Geschmacksverstärker
+        </ion-item>
+        <ion-item  style="--background: transparent;">
+          <b>5)</b>&nbsp; Geschwefelt
+        </ion-item>
+        <ion-item  style="--background: transparent;">
+          <b>6)</b>&nbsp; Geschwärzt
+        </ion-item>
+        <ion-item  style="--background: transparent;">
+          <b>7)</b>&nbsp; Gewachst
+        </ion-item>
+        <ion-item  style="--background: transparent;">
+          <b>8)</b>&nbsp; Mit Phosphat
+        </ion-item>
+        <ion-item  style="--background: transparent;">
+          <b>9)</b>&nbsp; Mit Süßungsmittel
+        </ion-item>
+        <ion-item  style="--background: transparent;">
+          <b>10)</b>&nbsp; Süßungsmittel enthält Phenylalaninquelle
+        </ion-item>
+        <ion-item  style="--background: transparent;">
+          <b>11)</b>&nbsp; Koffeinhaltig
+        </ion-item>
+        <ion-item  style="--background: transparent;">
+          <b>12)</b>&nbsp; Chininhaltig
+        </ion-item>
+      </ion-list>
+      <hr>
 </ion-content>

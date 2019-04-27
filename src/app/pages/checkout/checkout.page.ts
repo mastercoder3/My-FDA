@@ -11,6 +11,7 @@ import { HelperService } from 'src/app/services/helper.service';
 })
 export class CheckoutPage implements OnInit {
 
+  now = false;
   terms = false;
   zips;
   cart;
@@ -23,6 +24,7 @@ export class CheckoutPage implements OnInit {
   datePlaceholder='';
   today;
   timings;
+  selectCode='';
 
   constructor(private router: Router, private api: ApiService, private helper: HelperService, private route: ActivatedRoute) { }
 
@@ -36,7 +38,9 @@ export class CheckoutPage implements OnInit {
       date: '',
       phone: '',
       orderType: 'Delivery',
-      total: 0
+      total: 0,
+      now: '',
+      preOrder: ''
     }
     this.getData();
     this.helper.getCart().subscribe(res =>{
@@ -59,6 +63,7 @@ export class CheckoutPage implements OnInit {
     let today = `${Today.getFullYear()}-${(Today.getMonth()+1) < 10 ? ('0'+(Today.getMonth()+1)) : (Today.getMonth()+1)}-${(Today.getDate() < 10) ? ('0'+(Today.getDate())) : Today.getDate()}`;
     this.today = today;
     today = today + `T${Today.getHours()<10 ? ('0'+Today.getHours()) : Today.getHours()}:${Today.getMinutes()< 10 ? ('0'+Today.getMinutes()) : Today.getMinutes()}`;
+    this.data.preOrder = today;
     this.data.date = today;
   }
 
@@ -74,7 +79,8 @@ export class CheckoutPage implements OnInit {
     else{
       this.flagTotal = this.total;
     }
-
+    this.data.discount = this.discount ? this.discount : 0;
+    console.log(this.data)
   }
 
 
@@ -121,6 +127,19 @@ export class CheckoutPage implements OnInit {
     console.log(this.data)
   }
 
+  changeStatus1(){
+      if(this.now){
+        this.now = false;
+      }
+      else{
+        this.now = true;
+      }
+  }
+
+  statusChange1(event){
+    console.log(event)
+  }
+
   statusChange(event){
     this.terms = event;
     if(!this.terms){
@@ -137,11 +156,11 @@ export class CheckoutPage implements OnInit {
   }
 
   order(){
-    if(this.data.date.substr(0,this.data.date.indexOf('T')) < this.today){
+    if(this.data.preOrder.substr(0,this.data.date.indexOf('T')) < this.today){
       this.helper.presentToast('Invalid Date, Please Choose again.');
     }
     else{
-      this.checkTimings(this.data.date,1);
+      this.checkTimings(this.data.preOrder,1);
       if(this.closed){
         return;
       }
@@ -151,23 +170,31 @@ export class CheckoutPage implements OnInit {
             this.data.address !=='' &&
             this.data.phone !== '' &&
             this.data.voucher !=='' &&
-            this.data.date !== ''){
+            (this.data.preOrder !== '' || this.data.now !== '')){
               if(!this.terms && this.data.code !== ''){
                 this.data.code = this.data.code + ` (${this.codeArea})`;
                 this.data.orderDetails = this.cart;
-                this.data.discount = this.discount ? this.discount : 0;
                 this.data.deliveryFee = this.delCharges ? this.delCharges : 0;
+                if(this.now){
+                  this.data.now = "schnell wie möglich";
+                  this.data.preOrder = '';
+                }
+                else{
+                  this.data.now = "";
+                }
+                this.helper.presentLoading();
                 this.api.addToOrders(this.data)
                   .then(res =>{
                     this.cart = [];
+                    this.helper.closeLoading();
                     this.helper.setCart(this.cart);
                     localStorage.setItem('cart',JSON.stringify(this.cart))
-                    this.helper.presentToast('Order Placed. Check your Email for Order details.');
+                    this.helper.presentToast('Bestellung abgeschlossen, überprüfen Sie Ihre E-Mail auf Details.');
                     this.router.navigate(['tabs']);
                     this.setOrderHistory();
                     
                   },err =>{
-                    this.helper.presentToast('Somthing went wrong!')
+                    this.helper.presentToast('Etwas ist schief gelaufen!')
                   })
               }
               else if(this.terms){
@@ -212,21 +239,23 @@ export class CheckoutPage implements OnInit {
     }
   }
 
+
   setNewPrice(event){
     let x: Array<any> = [];
-    x = this.zips.filter(data => data.code === parseInt(event));
+    x = this.zips.filter(data => data.did === event);
     if(x[0].minOrder < this.flagTotal)
       {
         this.total = this.flagTotal + x[0].rate; 
         this.delCharges = x[0].rate;
         this.data.total = this.total;
         this.codeArea = x[0].area;
+        this.data.code = x[0].code;
       }
     else{
       this.helper.presentToast(`Min order for delivery is ${x[0].minOrder}`);
       this.data.code = '';
     }
-
+    console.log(this.data);
   }
 
   show=false;
