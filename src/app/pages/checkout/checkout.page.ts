@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { map } from 'rxjs/operators';
 import { HelperService } from 'src/app/services/helper.service';
+import { Http, RequestOptions,Headers } from '@angular/http';
+
 
 @Component({
   selector: 'app-checkout',
@@ -26,7 +28,8 @@ export class CheckoutPage implements OnInit {
   timings;
   selectCode='';
 
-  constructor(private router: Router, private api: ApiService, private helper: HelperService, private route: ActivatedRoute) { }
+  constructor(private router: Router, private api: ApiService,private http: Http ,
+    private helper: HelperService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.data = {
@@ -192,7 +195,10 @@ export class CheckoutPage implements OnInit {
                     this.helper.presentToast('Bestellung abgeschlossen, überprüfen Sie Ihre E-Mail auf Details.');
                     this.router.navigate(['tabs']);
                     this.setOrderHistory();
-                    
+                    this.sendEmail(this.data)
+                      .subscribe(res =>{
+                        // alert(JSON.stringify(res))
+                      });
                   },err =>{
                     this.helper.presentToast('Etwas ist schief gelaufen!')
                   })
@@ -200,14 +206,28 @@ export class CheckoutPage implements OnInit {
               else if(this.terms){
                 this.data.code = '';
                 this.data.orderDetails = this.cart;
+                this.data.deliveryFee = 0;
+                if(this.now){
+                  this.data.now = "schnell wie möglich";
+                  this.data.preOrder = '';
+                }
+                else{
+                  this.data.now = "";
+                } this.helper.presentLoading();
                 this.api.addToOrders(this.data)
                   .then(res =>{
+                    this.helper.closeLoading();
                     this.cart = [];
                     this.helper.setCart(this.cart);
                     localStorage.setItem('cart',JSON.stringify(this.cart))
                     this.helper.presentToast('Order Placed. Check your Email for Order details.');
                     this.router.navigate(['tabs'])
                     this.setOrderHistory();
+                    this.sendEmail(this.data)
+                    .subscribe(res =>{
+                      // alert(JSON.stringify(res))
+
+                    });
                   },err =>{
                     this.helper.presentToast('Somthing went wrong!')
                   })
@@ -396,6 +416,21 @@ export class CheckoutPage implements OnInit {
 
     });
     this.show = false;
+  }
+
+  sendEmail(data){
+    let myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: myHeaders });
+    //callrequest
+    return this.http.post('http://server-fda.mybluemix.net/sendemail',{
+      order: data
+    }, options);
+  }
+
+  extractData(res){
+    let body = res.json();
+    return body;
   }
 
 }

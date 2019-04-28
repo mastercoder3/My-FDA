@@ -43,17 +43,7 @@ export class HomePage implements OnInit {
         })
       )
       .subscribe();
-      this.ob$ = this.api.getTimings()
-      .pipe(map(actions => actions.map(a => {
-        const data = a.payload.doc.data();
-        const did = a.payload.doc.id;
-        return {did, ...data};
-      })))
-      .subscribe(res =>{
-        this.timings = res;
-        this.checkClosing();
-        this.ob$.unsubscribe();
-      });
+
     });
   }
 
@@ -72,7 +62,18 @@ export class HomePage implements OnInit {
         this.categories = res;
       });
     
-
+      this.ob$ = this.api.getTimings()
+      .pipe(map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const did = a.payload.doc.id;
+        return {did, ...data};
+      })))
+      .subscribe(res =>{
+        this.timings = res;
+        this.checkClosing();
+        this.ob$.unsubscribe();
+      });
+      
   }
 
   checkClosing(){

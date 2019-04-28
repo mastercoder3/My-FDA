@@ -45,7 +45,7 @@ export class ApiService {
   }
 
   getAllZipCodes(){
-    return this.afs.collection('zips', ref => ref.where('area','>','')).snapshotChanges();
+    return this.afs.collection('zips', ref => ref.where('code','>',0).orderBy('code','asc')).snapshotChanges();
   }
 
   addToOrders(data){
