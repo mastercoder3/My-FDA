@@ -1,6 +1,7 @@
 ion-toolbar{
     --background: rgb(190, 34, 34);
     color: white;
+    font-family: 'BubblegumSans-Regular';
     #back{
         margin-left: auto;
         margin-right: auto;
@@ -9,8 +10,17 @@ ion-toolbar{
   }
   ion-title{
     --color: white;
-    text-align: center;
-
+    
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0 90px 1px;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+  ion-menu-button{
+    color: white;
   }
 ion-content{
     height: 100%;
@@ -64,6 +74,9 @@ ion-content{
 }
 .body {
     --background: rgb(190, 34, 34) !important;
+    #disc{
+        float: left; width: 70px; position: fixed; right: 10px; top: 38px; z-index: 100;
+    }
 }
 
 #checkbox{
@@ -96,7 +109,7 @@ ion-content{
 @media (min-width: 320px) and  (max-width: 350px){
    .body{
        #disc{
-        float: left; width: 70px; position: fixed; right: 10px; top: 25px !important; z-index: 100;
+        float: left; width: 70px; position: fixed; right: 10px; top: 38px !important; z-index: 100;
        }
        
    }
@@ -137,7 +150,7 @@ ion-content{
 @media (min-width: 370px) and  (max-width: 409px){
     .body{
         #disc{
-         float: left; width: 70px; position: fixed; right: 10px; top: 25px !important; z-index: 100;
+         float: left; width: 70px; position: fixed; right: 10px; top: 38px !important; z-index: 100;
         }
         
     }

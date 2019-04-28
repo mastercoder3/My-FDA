@@ -1,11 +1,21 @@
 ion-toolbar{
-    --background:  rgb(190, 34, 34);
-    ion-icon{
-        color:white;
-        font-size: 26px;
+    --background: rgb(190, 34, 34);
+    font-family: 'BubblegumSans-Regular';
+  }
+  ion-title{
+    --color: white;
+    
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0 90px 1px;
+      width: 100%;
+      height: 100%;
+      text-align: center;
     }
-}
-
+  ion-menu-button{
+    color: white;
+  }
 ion-content{
     height: 100%;
     width: 100%;

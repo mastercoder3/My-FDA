@@ -21,10 +21,19 @@ export class FooddetailsPage implements OnInit {
   clicked = false;
   cartItems;
   category;
+  url;
 
   constructor(public modalController: ModalController, private helper:HelperService, private router: Router, private actived: ActivatedRoute) { }
 
   ngOnInit() {
+    this.router.events.subscribe(res =>{
+      this.url = res;
+        if(this.url.url === '/tabs/fooddetails'){
+          this.addon = [];
+          this.quantity = 1;
+        }
+      
+    })
     this.helper.getData().subscribe(data =>{
       this.helper.getType().subscribe(type =>{
         this.type = type;

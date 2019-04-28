@@ -68,10 +68,10 @@ ion-icon{
   .body-content{
     height: 60%;
     width: 100%;
-    h2{
+    h1{
       text-align: center;
       color: rgb(190, 34, 34);
-      font-size: 18px;
+      // font-size: 18px;
     }
     p{
       text-align: center;
@@ -162,7 +162,7 @@ ion-icon{
 }
 
 @media (min-width: 480px) and  (max-width: 740px){
-  h2{
+  h1{
     text-align: center;
     color: rgb(190, 34, 34);
     font-size: 30px !important;
@@ -218,7 +218,7 @@ ion-icon{
      }
    }
  }
-  h2{
+  h1{
     text-align: center;
     color: rgb(190, 34, 34);
     font-size: 32px !important;
@@ -282,7 +282,7 @@ ion-icon{
       }
     }
   }
-  h2{
+  h1{
     text-align: center;
     color: rgb(190, 34, 34);
     font-size: 40px !important;
@@ -345,7 +345,7 @@ ion-icon{
       }
     }
   }
-  h2{
+  h1{
     text-align: center;
     color: rgb(190, 34, 34);
     font-size: 40px !important;
