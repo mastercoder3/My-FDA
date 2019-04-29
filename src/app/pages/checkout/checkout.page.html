@@ -102,9 +102,11 @@
                     <ion-col col="10" style="border-bottom: 1px rgba(190, 34, 34,0.6) solid;">
                       <p>Für wann möchtest du bestellen</p>
                       <!-- <br> -->
-                      <ion-row id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="now" color="danger" (ngModelChange)="statusChange1($event)" style="margin-left: 0px;" ></ion-checkbox ><p (click)="changeStatus1()">Schnell wie möglich.</p></ion-row>
+                      <ion-row id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="now" color="danger" (ngModelChange)="statusChange1($event)" style="margin-left: 0px;" ></ion-checkbox ><p (click)="changeStatus1()">Schnellstmöglich.</p></ion-row>
                         <br>
-                        <ion-datetime [disabled]="now" display-format="MMM DD, YYYY HH:mm" [(ngModel)]="data.preOrder" placeholder="Pick a Date, Time"></ion-datetime>
+                        <ion-datetime [disabled]="now" display-format="MMM DD, YYYY HH:mm" doneText="Ok" cancelText="Abbrechen"
+                        monthShortNames="Jan,Feb,Mrz,Apr,Mai,Jun,Jul,Aug,Sep,Okt,Nov,Dez"
+                        [(ngModel)]="data.preOrder" placeholder="Pick a Date, Time"></ion-datetime>
                     </ion-col>
                   </ion-row>
               <ion-row id="checkbox"><ion-checkbox mode="ios" [(ngModel)]="terms" color="danger" (ngModelChange)="statusChange($event)" ></ion-checkbox ><p (click)="changeStatus()">Ich möchte die Bestellung abholen.</p></ion-row>

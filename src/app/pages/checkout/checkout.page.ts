@@ -117,13 +117,13 @@ export class CheckoutPage implements OnInit {
   changeStatus(){
     if(this.terms){
       this.terms = false;
-      this.data.orderType = 'Delivery'
+      this.data.orderType = 'Lieferung'
       this.total = this.flagTotal + this.delCharges;
       this.data.total = this.total;
     }
     else{
       this.terms = true;
-      this.data.orderType = 'Self Pickup';
+      this.data.orderType = 'Abholung';
       this.total = this.total - this.delCharges;
       this.data.total = this.total;
     }
@@ -146,12 +146,12 @@ export class CheckoutPage implements OnInit {
   statusChange(event){
     this.terms = event;
     if(!this.terms){
-      this.data.orderType = 'Delivery'
+      this.data.orderType = 'Lieferung'
       this.total = this.flagTotal + this.delCharges;
       this.data.total = this.total;
     }
     else{
-      this.data.orderType = 'Self Pickup'
+      this.data.orderType = 'Abholung'
       this.total = this.total - this.delCharges;
       this.data.total = this.total;
     }
@@ -272,7 +272,7 @@ export class CheckoutPage implements OnInit {
         this.data.code = x[0].code;
       }
     else{
-      this.helper.presentToast(`Min order for delivery is ${x[0].minOrder}`);
+      this.helper.presentToast(`Mindestbestellwert ist für die Lieferung ${x[0].minOrder}€`);
       this.data.code = '';
     }
     console.log(this.data);
