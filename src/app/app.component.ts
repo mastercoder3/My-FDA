@@ -25,7 +25,14 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      // this.statusBar.styleDefault();
+      // let status bar overlay webview
+      if(this.platform.is('ios'))
+        this.statusBar.overlaysWebView(false);
+      else
+        this.statusBar.overlaysWebView(true);
+      // set status bar to white
+      this.statusBar.backgroundColorByHexString('#be2222');
       this.splashScreen.hide();
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     });

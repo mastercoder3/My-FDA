@@ -33,11 +33,11 @@ export class ApiService {
   }
 
   getPizzaExtras(){
-    return this.afs.collection('pextras').snapshotChanges();
+    return this.afs.collection('pextras', ref => ref.orderBy('price','asc')).snapshotChanges();
   }
 
   getPastaExtras(){
-    return this.afs.collection('pastaextras').snapshotChanges();
+    return this.afs.collection('pastaextras', ref => ref.orderBy('price','asc')).snapshotChanges();
   }
 
   getAllDeals(){

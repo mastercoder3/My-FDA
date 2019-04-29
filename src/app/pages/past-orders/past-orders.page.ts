@@ -31,29 +31,32 @@ export class PastOrdersPage implements OnInit {
 
   reorder(item){
     console.log(item)
-    let order = item.orderDetails[0];
-    if(localStorage.getItem('cart')){
-      let x = [];
-      x = JSON.parse(localStorage.getItem('cart'));
-      let check;
-      check = x.findIndex(data => data.itemTitle === order.itemTitle && data.itemIngredients === order.itemIngredients
-         && data.size === order.size && JSON.stringify(data.extras) === JSON.stringify(order.extras))
-      if(check > -1){
-        x[check].quantity += order.quantity;
-        x[check].price = x[check].price + order.price;
+    for(let i = 0; i < item.orderDetails.length; i++){
+      let order = item.orderDetails[i];
+      if(localStorage.getItem('cart')){
+        let x = [];
+        x = JSON.parse(localStorage.getItem('cart'));
+        let check;
+        check = x.findIndex(data => data.itemTitle === order.itemTitle && data.itemIngredients === order.itemIngredients
+           && data.size === order.size && JSON.stringify(data.extras) === JSON.stringify(order.extras))
+        if(check > -1){
+          x[check].quantity += order.quantity;
+          x[check].price = x[check].price + order.price;
+        }
+        else
+          x.push(order);
+        localStorage.setItem('cart',JSON.stringify(x));
+        this.helper.setCart(x);
       }
-      else
+      else{
+        let x = [];
         x.push(order);
-      localStorage.setItem('cart',JSON.stringify(x));
-      this.helper.setCart(x);
-    }
-    else{
-      let x = [];
-      x.push(order);
-      localStorage.setItem('cart',JSON.stringify(x));
-      this.helper.setCart(x);
+        localStorage.setItem('cart',JSON.stringify(x));
+        this.helper.setCart(x);
+      }
     }
     this.helper.presentToast('In den Warenkorb hinzugefügt');
+
   }
 
 }
