@@ -102,7 +102,7 @@ export class CartPage implements OnInit {
       this.router.navigate(['checkout']);
     }
     else  
-      this.helper.presentToast('Please Accept Terms and Conditions.');
+      this.helper.presentToast('Bitte akzeptieren Sie unsere allgemeine Geschäftsbedingungen');
   }
 
   changeStatus(){

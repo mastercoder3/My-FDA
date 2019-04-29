@@ -41,7 +41,7 @@
             <p id="size-tag1">{{item}}</p>
           </ion-col>
           <ion-col size="3" no-padding>
-            <p id="size-tag">{{product.price[i]}} &euro;</p>
+            <p id="size-tag">{{product.price[i] | number: '1.2-2'}} &euro;</p>
           </ion-col>
           <br> <br>
         </ion-row>
@@ -57,7 +57,7 @@
               <p id="size-tag1">{{product?.size}}</p>
             </ion-col>
             <ion-col size="3" no-padding>
-              <p id="size-tag">{{product.price}} &euro;</p>
+              <p id="size-tag">{{product.price | number : '1.2-2'}} &euro;</p>
             </ion-col>
             <br> <br>
           </ion-row>

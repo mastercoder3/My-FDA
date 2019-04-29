@@ -40,7 +40,7 @@ export class CheckoutPage implements OnInit {
       code: '',
       date: '',
       phone: '',
-      orderType: 'Delivery',
+      orderType: 'Lieferung',
       total: 0,
       now: '',
       preOrder: ''
@@ -160,7 +160,7 @@ export class CheckoutPage implements OnInit {
 
   order(){
     if(this.data.preOrder.substr(0,this.data.date.indexOf('T')) < this.today){
-      this.helper.presentToast('Invalid Date, Please Choose again.');
+      this.helper.presentToast('Ungültiges Datum');
     }
     else{
       this.checkTimings(this.data.preOrder,1);
@@ -220,7 +220,7 @@ export class CheckoutPage implements OnInit {
                     this.cart = [];
                     this.helper.setCart(this.cart);
                     localStorage.setItem('cart',JSON.stringify(this.cart))
-                    this.helper.presentToast('Order Placed. Check your Email for Order details.');
+                    this.helper.presentToast('Bestellung abgeschlossen, überprüfen Sie Ihre E-Mail auf Details.');
                     this.router.navigate(['tabs'])
                     this.setOrderHistory();
                     this.sendEmail(this.data)
@@ -229,15 +229,15 @@ export class CheckoutPage implements OnInit {
 
                     });
                   },err =>{
-                    this.helper.presentToast('Somthing went wrong!')
+                    this.helper.presentToast('Etwas ist schief gelaufen!')
                   })
               }
               else{
-                this.helper.presentToast('Please Choose a Zip Code');
+                this.helper.presentToast('Ihr Postleitzahl');
               }
             }
             else{
-              this.helper.presentToast('Please Provide All information.');
+              this.helper.presentToast('Bitte geben Sie alle Informationen an.');
             }
       }
     }

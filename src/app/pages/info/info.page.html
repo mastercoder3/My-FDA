@@ -17,9 +17,9 @@
       <ion-item *ngFor="let item of daily[0].timings; let i = index;" style="--background: transparent;">
         <ion-row style="width: 100%;">
           <ion-col size="4">{{days[i]}}</ion-col>
-          <ion-col size="8"><b>Öffnen:</b> {{item.from}} - {{item.to}}
+          <ion-col size="8"><b>Von - bis:</b> {{item.from}} - {{item.to}}
           <br>
-            <b>Schließen:</b> {{item?.breakFrom}} - {{item?.breakTo}}
+            <b>Pause:</b> {{item?.breakFrom}} - {{item?.breakTo}}
         </ion-col>
         </ion-row>
       </ion-item>

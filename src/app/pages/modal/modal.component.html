@@ -3,7 +3,7 @@
     <br>
       <ion-list class="setting-content" *ngFor="let item of extras; let i = index;">
 
-          <ion-list-header no-lines class="label-header">Beilagen für {{item.price}} &euro;</ion-list-header>
+          <ion-list-header no-lines class="label-header">Beilagen für {{item.price | number : '1.2-2'}} &euro;</ion-list-header>
           <ion-item-group class="fst-group">
             <ion-item no-lines *ngFor="let listt of item?.items; let j = index;">
               <ion-label>{{listt?.display}}</ion-label>

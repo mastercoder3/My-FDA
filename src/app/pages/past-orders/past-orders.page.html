@@ -12,10 +12,10 @@
 <ion-content>
   <div class="container">
     <div class="noItems" *ngIf="orders.length === 0">
-      <h4 style="color: grey; text-align: center;">Keine vergangenen Bestellungen</h4>
+      <h4 style="color: grey; text-align: center;">Keine vergangenen bestellungen</h4>
     </div>
     <div class="body" id="pastOrders" *ngIf="orders.length > 0">
-      <h3 style="color: grey; text-align: center;">Ihre Bisherigen Bestellungen</h3>
+      <h3 style="color: grey; text-align: center;">Ihre bisherigen bestellungen</h3>
       <h4 style="text-align: right;"><span (click)="clear()">Löschen</span><ion-icon name="trash" (click)="clear()" style="position: relative; top: 4px; color: rgb(206, 73, 73);"></ion-icon></h4>
         <accordion>
             <accordion-group *ngFor="let item of orders" heading="{{item?.name}} ({{extractDate(item?.date)}})">
