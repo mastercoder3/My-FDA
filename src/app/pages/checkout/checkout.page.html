@@ -1,21 +1,18 @@
 <ion-header style="z-index: -1;">
   <ion-toolbar>
-      <ion-row>
-        <ion-col size="2" id="back">
-          <ion-buttons>
-            <ion-icon name="arrow-round-back" (click)="goback()"></ion-icon>
-          </ion-buttons>
-        </ion-col>
-        <ion-col size="7">
-          <ion-title>
-            Kasse
-          </ion-title>
-        </ion-col>
-        <ion-col></ion-col>
-      </ion-row>
-  </ion-toolbar>
+    <ion-row>
+      <ion-col size="2">
+        <ion-buttons>
+          <ion-icon name="ios-arrow-back" (click)="goback()"></ion-icon>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="8">
+        <h1 id="main-header">Kasse
+        </h1>
+      </ion-col>
+    </ion-row>
+</ion-toolbar>
 </ion-header>
-
 <ion-content>
 
   <div class="container">
@@ -87,7 +84,7 @@
                       <ion-icon name="document" style="color:rgba(190, 34, 34,0.6);"></ion-icon>
                     </ion-col>
                     <ion-col col="10" style="border-bottom: 1px rgba(190, 34, 34,0.6) solid;">
-                        <ion-select placeholder="Bewirtungsbeleg" [(ngModel)]="data.voucher" >
+                        <ion-select placeholder="Bewirtungsbeleg" [(ngModel)]="data.voucher" cancelText="Abbrechen" >
                             <ion-select-option value="Ja" >Ja</ion-select-option>
                             <ion-select-option value="Nein" >Nein</ion-select-option>
 
