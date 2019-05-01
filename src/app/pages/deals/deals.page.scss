@@ -30,6 +30,15 @@ ion-toolbar{
     background-color: rgb(235, 235, 235);
 }
 
+
+.noItems{
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    top:35% !important;
+    bottom: auto !important; 
+}
+
 .content{
     height: 55%;
     width: 90%;

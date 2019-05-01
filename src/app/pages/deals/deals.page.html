@@ -11,7 +11,9 @@
 
 <ion-content class="container">
   <div class="body">
-    
+    <div class="noItems" *ngIf="deals.length === 0">
+      <h4 style="color: grey; text-align: center;">Leider haben wir zur Zeit keine Deals</h4>
+    </div>
     <div class="content" *ngFor="let item of deals" (click)="addToCart(item)" >
       <div class="image">
         <img src="{{item?.imageURL || 'assets/imgs/pepperpizza.png'}}">

@@ -10,7 +10,7 @@ import { HelperService } from 'src/app/services/helper.service';
 })
 export class DealsPage implements OnInit {
 
-  deals;
+  deals: Array<any>= [];
 
   constructor(private api: ApiService, private helper: HelperService) { }
 
@@ -54,7 +54,8 @@ export class DealsPage implements OnInit {
         quantity: 1,
         size: '',
         price: price ? price : 0,
-        extras: []
+        extras: [],
+        type: 'Deal'
       }
 
       if(localStorage.getItem('cart')){

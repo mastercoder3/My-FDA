@@ -12,6 +12,7 @@
 <ion-content>
   <div class="body">
     <h1><b style="color:rgb(190, 34, 34)">Total</b> : {{total | number : '1.2-2'}} &euro;</h1>
+    <h3><b style="color:rgb(190, 34, 34)">Ersparnis:</b> : {{discountAmount || 0 | number : '1.2-2'}} &euro;</h3>
     <img id="disc" src="assets/imgs/discount.png" >
     <div class="item">
     <hr id="sep">

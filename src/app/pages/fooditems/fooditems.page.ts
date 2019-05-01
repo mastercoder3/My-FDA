@@ -72,6 +72,7 @@ export class FooditemsPage implements OnInit {
     .pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data();
       const did = a.payload.doc.id;
+      
       return {did, ...data}
     })))
     .subscribe(res =>{

@@ -9,27 +9,27 @@ export class ApiService {
   constructor(private afs: AngularFirestore) { }
 
   getAllPizzas(){
-    return this.afs.collection('pizza').snapshotChanges();
+    return this.afs.collection('pizza', ref => ref.orderBy('date','asc')).snapshotChanges();
   }
 
   getAllPasta(){
-    return this.afs.collection('pasta').snapshotChanges();
+    return this.afs.collection('pasta', ref => ref.orderBy('date','asc')).snapshotChanges();
   }
 
   getAllSalad(){
-    return this.afs.collection('salads').snapshotChanges();
+    return this.afs.collection('salads', ref => ref.orderBy('date','asc')).snapshotChanges();
   }
 
   getAllAppetizers(){
-    return this.afs.collection('vorspeisen').snapshotChanges();
+    return this.afs.collection('vorspeisen', ref => ref.orderBy('date','asc')).snapshotChanges();
   }
 
   getAllDesserts(){
-    return this.afs.collection('dessert').snapshotChanges();
+    return this.afs.collection('dessert', ref => ref.orderBy('date','asc')).snapshotChanges();
   }
 
   getAllBeverages(){
-    return this.afs.collection('beverages').snapshotChanges();
+    return this.afs.collection('beverages', ref => ref.orderBy('date','asc')).snapshotChanges();
   }
 
   getPizzaExtras(){

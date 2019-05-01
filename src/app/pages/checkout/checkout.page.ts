@@ -223,11 +223,11 @@ export class CheckoutPage implements OnInit {
                     this.helper.presentToast('Bestellung abgeschlossen, überprüfen Sie Ihre E-Mail auf Details.');
                     this.router.navigate(['tabs'])
                     this.setOrderHistory();
-                    this.sendEmail(this.data)
-                    .subscribe(res =>{
-                      // alert(JSON.stringify(res))
+                    // this.sendEmail(this.data)
+                    // .subscribe(res =>{
+                    //   // alert(JSON.stringify(res))
 
-                    });
+                    // });
                   },err =>{
                     this.helper.presentToast('Etwas ist schief gelaufen!')
                   })
@@ -247,12 +247,30 @@ export class CheckoutPage implements OnInit {
   setOrderHistory(){
     if(localStorage.getItem('pastOrder')){
       let x = JSON.parse(localStorage.getItem('pastOrder'));
+      this.data.orderDetails.forEach((a,i) =>{
+        if(a.type === 'Deal'){
+          this.data.orderDetails.splice(i,1);
+        }
+      });
+      // let check = this.data.orderDetails.findIndex(data => data.type === 'Deal');
+      // if(check > -1){
+      //   this.data.orderDetails.splice(check,1);
+      // }
       x.push(this.data);
       localStorage.setItem('pastOrder',JSON.stringify(x));
       this.helper.setHistory(x);
     }
     else{
       let x: Array<any> = [];
+      // let check = this.data.orderDetails.findIndex(data => data.type === 'Deal');
+      // if(check > -1){
+      //   this.data.orderDetails.splice(check,1);
+      // }\
+      this.data.orderDetails.forEach((a,i) =>{
+        if(a.type === 'Deal'){
+          this.data.orderDetails.splice(i,1);
+        }
+      });
       x.push(this.data);
       localStorage.setItem('pastOrder',JSON.stringify(x));
       this.helper.setHistory(x);
