@@ -64,7 +64,7 @@
             </ion-radio-group>
         </div>
       <hr>
-      <h3 style="font-weight: bold;"  *ngIf="type === 'pizza' || type === 'pasta'" (click)="openModal()">Extras Wählen</h3>
+      <h3 style="font-weight: bold;"  *ngIf="type === 'pizza' || type === 'pasta'" (click)="openModal()">Extras Wählen +</h3>
       <p *ngIf="addon" style="text-align: left;">
         <span *ngFor="let item of addon; let i = index;">
           <i *ngFor="let extras of item?.items">{{extras?.quantity}}x {{extras?.text}},</i>

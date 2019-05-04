@@ -43,7 +43,8 @@ export class CheckoutPage implements OnInit {
       orderType: 'Lieferung',
       total: 0,
       now: '',
-      preOrder: ''
+      preOrder: '',
+      voucher: ''
     }
     this.getData();
     this.helper.getCart().subscribe(res =>{
@@ -194,11 +195,12 @@ export class CheckoutPage implements OnInit {
                     localStorage.setItem('cart',JSON.stringify(this.cart))
                     this.helper.presentToast('Bestellung abgeschlossen, überprüfen Sie Ihre E-Mail auf Details.');
                     this.router.navigate(['tabs']);
-                    this.setOrderHistory();
+                   
                     this.sendEmail(this.data)
                       .subscribe(res =>{
                         // alert(JSON.stringify(res))
                       });
+                      this.setOrderHistory();
                   },err =>{
                     this.helper.presentToast('Etwas ist schief gelaufen!')
                   })
@@ -222,12 +224,13 @@ export class CheckoutPage implements OnInit {
                     localStorage.setItem('cart',JSON.stringify(this.cart))
                     this.helper.presentToast('Bestellung abgeschlossen, überprüfen Sie Ihre E-Mail auf Details.');
                     this.router.navigate(['tabs'])
-                    this.setOrderHistory();
-                    // this.sendEmail(this.data)
-                    // .subscribe(res =>{
-                    //   // alert(JSON.stringify(res))
+                    
+                    this.sendEmail(this.data)
+                    .subscribe(res =>{
+                      // alert(JSON.stringify(res))
 
-                    // });
+                    });
+                    this.setOrderHistory();
                   },err =>{
                     this.helper.presentToast('Etwas ist schief gelaufen!')
                   })
